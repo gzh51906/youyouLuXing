@@ -7,8 +7,6 @@ import Phone from '../components/Phone.vue'
 Vue.use(Router)
 
 
-
-
 export default new Router({
   routes: [{
       path: '/bus',

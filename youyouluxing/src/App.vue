@@ -76,16 +76,17 @@ export default {
 };
 </script>
 <style >
-.routeritem{
+.routeritem {
   padding: 17px 0;
   height: 50px;
 
   font-size: 16px;
 }
 
-.van-icon, .van-icon::before {
-    display: inline-block;
-    font-size: 30px;
+.van-icon,
+.van-icon::before {
+  display: inline-block;
+  font-size: 30px;
 }
 .footer {
   padding-top: 9px;
@@ -113,6 +114,3 @@ export default {
 </style>
 
 
-
-<style>
-</style>
