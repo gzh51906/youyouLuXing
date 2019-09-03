@@ -1,11 +1,5 @@
 const express = require('express');
 
-<<<<<<< HEAD
-const Router  = express.Router();
-
-
-module.exports=Router;
-=======
 const router = express.Router();
 
 const {
@@ -150,4 +144,3 @@ router.get('/:id', async (req, res) => {
 })
 
 module.exports = router;
->>>>>>> laochen

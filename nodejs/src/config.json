@@ -1,12 +1,6 @@
 {
-<<<<<<< HEAD
-    "PORT":1906,
-    "DBurl":"mongodb://localhost:27017",
-    "DBname":"h5_1906"
-=======
     "PORT": 3003,
     "DBurl": "mongodb://localhost:27017",
     "DBname": "webdata"
 
->>>>>>> laochen
 }
