@@ -1,12 +1,27 @@
-exports.formatData = function formData({code=1,data=[],msg='',success=true}={}){
-    if(code === 0){
-       success=false;
+exports.formatData = function formData({
+    code = 1,
+    data = [],
+    msg = 'success'
+} = {}) {
+
+
+    if (code === 0) {
+        msg = 'fail';
     }
 
     return {
         code,
         data,
-        msg,
-        success
+        msg
     }
+}
+
+const {
+    create,
+    verify
+} = require('./token');
+
+exports.token = {
+    create,
+    verify
 }
