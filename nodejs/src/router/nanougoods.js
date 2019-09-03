@@ -26,7 +26,7 @@ router.post('/add', async (req, res) => {
     } = req.body;
     let data
     try {
-        insert('xioudata', {
+        insert('nanoudata', {
             title,
             src,
             sales,
@@ -50,7 +50,7 @@ router.get('/', async (req, res) => {
         limit,
         sort
     } = req.query;
-    let data = await find('xioudata', {}, {
+    let data = await find('nanoudata', {}, {
         skip,
         limit,
         sort
@@ -65,7 +65,7 @@ router.get('/:id', async (req, res) => {
     let {
         id
     } = req.params;
-    let data = await find('xioudata', {
+    let data = await find('nanoudata', {
         _id: id
     });
     res.send(formatData({
@@ -80,7 +80,7 @@ router.post('/attr', async (req, res) => {
     } = req.body;
     let data;
     if (attr) {
-        data = await find('xioudata', {
+        data = await find('nanoudata', {
             attr: attr
         });
     }
@@ -96,7 +96,7 @@ router.delete('/:id', (req, res) => {
     } = req.params;
     let data
     try {
-        remove('xioudata', {
+        remove('nanoudata', {
             _id: id
         })
         res.send(formatData())
@@ -121,7 +121,7 @@ router.patch('/:id', (req, res) => {
 
     try {
         if (title) {
-            update('xioudata', {
+            update('nanoudata', {
                 _id: id
             }, {
                 $set: {
@@ -130,7 +130,7 @@ router.patch('/:id', (req, res) => {
             })
         }
         if (price) {
-            update('xioudata', {
+            update('nanoudata', {
                 _id: id
             }, {
                 $set: {
@@ -139,7 +139,7 @@ router.patch('/:id', (req, res) => {
             })
         }
         if (src) {
-            update('xioudata', {
+            update('nanoudata', {
                 _id: id
             }, {
                 $set: {
@@ -148,7 +148,7 @@ router.patch('/:id', (req, res) => {
             })
         }
         if (attr) {
-            update('xioudata', {
+            update('nanoudata', {
                 _id: id
             }, {
                 $set: {

@@ -107,7 +107,7 @@ exports.find = async (colName, query = {}, {
     if (sort) {
         let opt = {};
         opt[sort] = asc == 'true' ? -1 : 1;
-         console.log(opt[sort]);
+        console.log(opt[sort]);
 
         result = result.sort(opt)
     }
@@ -124,3 +124,4 @@ exports.find = async (colName, query = {}, {
     client.close();
     return data;
 }
+

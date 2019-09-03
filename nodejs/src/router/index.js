@@ -9,6 +9,8 @@ const {
 
 // 引入路由文件
 const xiougoodsRouter = require('./xiougoods');
+const nanougoodsRouter = require('./nanougoods');
+const dongougoodsRouter = require('./dongougoods');
 const userRouter = require('./user');
 
 
@@ -32,6 +34,8 @@ router.use((req, res, next) => {
 
 
 router.use('/xiougoods', xiougoodsRouter);
+router.use('/nanougoods', nanougoodsRouter);
+router.use('/dongougoods', dongougoodsRouter);
 router.use('/user', userRouter);
 router.get('/verify', (req, res) => {
     // 获取前端传入的token
