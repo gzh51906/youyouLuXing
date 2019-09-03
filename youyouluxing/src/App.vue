@@ -1,31 +1,65 @@
 <template>
+
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <router-view></router-view>
+<van-tabbar route>
+  <van-tabbar-item
+    replace
+    :to="item.path"
+    :icon="item.icon"
+    v-for='item in navs'
+    :key='item.name'
+    active-color="#7d7e80"
+  >
+    {{item.text}}
+  </van-tabbar-item>
+  <van-tabbar-item
+    replace
+    icon="upgrade"
+  >
+    返回顶端
+  </van-tabbar-item>
+</van-tabbar>
+     
+
   </div>
 </template>
+<script>
+import Vue from "vue";
+import Vant from "vant";
+import VueRouter from "vue-router";
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
+import "vant/lib/index.css";
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+Vue.use(Vant);
+export default {
+  data() {
+    return {
+    
+      navs: [
+        {
+          path: "/home",
+          name: "home",
+          text: "首页",
+          icon: "wap-home"
+        },
+        {
+          path: "/help",
+          name: "help",
+          text: "帮助中心",
+          icon: "question-o"
+        },
+        {
+          path: "/phone",
+          name: "phone",
+          text: "客服电话",
+          icon: "phone-o"
+        }
+      ]
+    };
+  }
+};
+</script>
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+
+
