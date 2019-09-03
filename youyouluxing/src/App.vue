@@ -1,24 +1,40 @@
 <template>
 
-  <div id="app">
-    <router-view></router-view>
-<van-tabbar route>
-  <van-tabbar-item
-    replace
-    :to="item.path"
-    :icon="item.icon"
-    v-for='item in navs'
-    :key='item.name'
-    active-color="#7d7e80"
-  >
-    {{item.text}}
-  </van-tabbar-item>
-  <van-tabbar-item
-    replace
-    icon="upgrade"
-  >
-    返回顶端
-  </van-tabbar-item>
+    <div id="app">
+      <router-view></router-view>
+       <!-- 模块 -->
+        <div class="footer">      
+            <div class="xieyi">
+               <a href="">关于我们</a>
+               <a href="">联系我们</a>
+               <a href="">用户协议</a>
+            </div>
+           
+            <div class="xieyi">
+               <a>游游旅行</a>         
+            </div>
+        </div>
+         <!-- 模块完 -->
+          <van-tabbar route :fixed='false'>
+            <van-tabbar-item
+              replace
+              :to="item.path"
+              :icon="item.icon"
+              v-for='item in navs'
+              :key='item.name'
+              active-color="#7d7e80"
+              class="routeritem"
+           
+            >
+              {{item.text}}
+            </van-tabbar-item>
+            <van-tabbar-item
+              replace
+              icon="upgrade"
+              class="routeritem"
+            >
+              返回顶端
+            </van-tabbar-item>
 </van-tabbar>
      
 
@@ -35,7 +51,6 @@ Vue.use(Vant);
 export default {
   data() {
     return {
-    
       navs: [
         {
           path: "/home",
@@ -60,6 +75,42 @@ export default {
   }
 };
 </script>
+<style >
+.routeritem{
+  padding: 17px 0;
+  height: 50px;
+
+  font-size: 16px;
+}
+
+.van-icon, .van-icon::before {
+    display: inline-block;
+    font-size: 30px;
+}
+.footer {
+  padding-top: 9px;
+  background: #ffffff;
+}
+.xieyi {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 9px 0;
+}
+
+.xieyi a {
+  text-decoration: none;
+  display: inline-block;
+  border-right: 1px solid #cccccc;
+  padding: 0 9px;
+  color: rgb(102, 102, 102);
+  font-size: 14px;
+  line-height: 14px;
+}
+.xieyi a:nth-last-child(1) {
+  border-right: none;
+}
+</style>
 
 
 
