@@ -13,12 +13,6 @@ export default new Router({
       name: 'bus',
       component: Bus
     },
-
-    {
-      path: '/',
-      redirect: '/home',
-      component: Home
-    },
     {
       path: '/home',
       name: 'home',
