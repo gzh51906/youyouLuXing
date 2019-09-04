@@ -9,14 +9,4 @@ export default new Vuex.Store({
     bus
   }
 
-  // state: {
-
-  // },
-  // getters: {},
-  // mutations: { 
-
-  // },
-  // actions: {
-
-  // }
 })
