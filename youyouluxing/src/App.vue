@@ -83,7 +83,7 @@ export default {
   }
 };
 </script>
-<style >
+<style>
 .routeritem {
   padding: 17px 0;
   height: 50px;
