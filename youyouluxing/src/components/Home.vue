@@ -6,7 +6,10 @@
                 <img src="https://www.yoyoer.com/uploads/2018/1221/35530b4e70fa28566b7e91d0e257deb3.png" alt="" class="logo">
             </van-col>
             <van-col span="2">
-                <van-icon name="friends-o" size='20px' color='#1989fa' /></van-col>
+             
+                  <van-icon name="friends-o" size='20px' color='#1989fa' @click="tomine"/>
+              
+                </van-col>
         </van-row>
         <!-- 轮播图 -->
         <van-swipe :autoplay="3000" :height='175'>
@@ -424,7 +427,11 @@ export default {
         console.log(this.active);
       }
       this.show = false;
+    },
+    tomine(){
+      this.$router.push('/mine')
     }
+
   }
 };
 </script>
