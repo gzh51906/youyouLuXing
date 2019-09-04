@@ -6,7 +6,6 @@
     <BusMain></BusMain>
     <BusMain></BusMain>
     <BusMain></BusMain>
-    <BusFooter></BusFooter>
   </div>
 </template>
 

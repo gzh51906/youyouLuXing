@@ -36,6 +36,11 @@
     "westEurope": [{
         "type": "西欧",
         "imgurl": "https://www.yoyoer.com/uploads/2018/1213/c78b8ff052a57a8f09da9edf163adc71_330x225.jpg",
+        "imgurl1": "https://www.yoyoer.com/uploads/2019/0412/a386d9cb728fa556ccf97519797427d5_750x400.jpg",
+        "imgurl2": "https://www.yoyoer.com/uploads/2019/0412/b810aaa6d81753b78c312fca3b09d60b_750x400.jpg",
+        "imgurl3": "https://www.yoyoer.com/uploads/2019/0412/53ad57f682c098676357ebc1cb410ddc_750x400.jpg",
+        "imgurl4": "https://www.yoyoer.com/uploads/2019/0412/061ab3014f44e3cfe0ef6eca2ff15642_750x400.jpg",
+        "imgurl5": "https://www.yoyoer.com/uploads/2019/0412/2aec409bce76b7b79ee55f81af20ed9a_750x400.jpg",
         "title": "【比利时温泉休闲2日】单人报名包拼房！9月7日铁发，原价149欧的比利时温泉休闲两日游!到全球温泉发源地享受最古老的温泉水疗，体会原汁原味的欧洲乡村风情和慢节奏的生活，一起出发到邻国度过一个惬意的假期吧！",
         "price": "89.00",
         "class": "",
@@ -48,7 +53,11 @@
         "price": "89.00",
         "class": "",
         "data": "",
-        "gid": "030"
+        "gid": "030",
+        "plan": "215",
+        "oldprice": "149",
+        "talk": "100%",
+        "type1": "大巴游"
     }, {
         "type": "西欧",
         "imgurl": "https://www.yoyoer.com/uploads/2019/0412/53ad57f682c098676357ebc1cb410ddc_330x225.jpg",
