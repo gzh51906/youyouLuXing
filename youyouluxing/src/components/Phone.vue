@@ -1,8 +1,10 @@
 <template>
-    <h2>phone</h2>
+    <div>
+       phone
+
+    </div>
+
 </template>
 <script>
-export default {
-    
-}
+export default {};
 </script>

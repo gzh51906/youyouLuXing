@@ -2,7 +2,8 @@
 
     <div id="app">
       <router-view></router-view>
-       <!-- 模块 -->
+    <div v-show="change">
+         <!-- 模块 -->
         <div class="footer">      
             <div class="xieyi">
                <a href="">关于我们</a>
@@ -37,6 +38,7 @@
               返回顶端
             </van-tabbar-item>
 </van-tabbar>
+  </div>
      
 
   </div>
@@ -52,6 +54,7 @@ Vue.use(Vant);
 export default {
   data() {
     return {
+     routefootertoshow:'',
       navs: [
         {
           path: "/home",
@@ -75,12 +78,24 @@ export default {
     };
   },
   methods:{
-      handleItemClick() {
-     
-          window.scrollTo(0,0);  
-      
+      handleItemClick() {     
+          window.scrollTo(0,0);        
+    },
+    routeshow(){
+       let res=['/home','/help','/phone','/bus']
+       let result=res.some((item)=>{return this.$route.path===item})
+       console.log(mine);
+      // this.routefootertoshow=result
     }
+
+  },
+  computed:{
+      change(){
+       return this.$store.state.home.routefootertoshow;
+      }
   }
+  
+  
 };
 </script>
 <style>
