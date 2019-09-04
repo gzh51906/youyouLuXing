@@ -99,19 +99,19 @@ router.patch('/:id', (req, res) => {
         id,
     } = req.params;
     let {
-       status
+        status
     } = req.body;
 
     try {
-     
-            update('mycart', {
-                _id: id
-            }, {
-                $set: {
-                    status: status
-                }
-            })
-        
+
+        update('mycart', {
+            _id: id
+        }, {
+            $set: {
+                status: status
+            }
+        })
+
         res.send(formatData())
     } catch (err) {
         res.send(formatData({
