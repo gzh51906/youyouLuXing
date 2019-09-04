@@ -10,12 +10,13 @@ export default {
   },
   methods: {
     getDetails(id) {
-      console.log(this.data);
-      
-      // for(item in this.data){
-      //   console.log(111);
-        
-      // }
+      console.log(23);
+
+      console.log(typeof this.data);
+
+      for (item in this.data) {
+        console.log(item);
+      }
     }
   },
   created() {

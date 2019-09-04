@@ -1,18 +1,33 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Goods from '../pages/goods.vue'
 import Bus from '../pages/bus.vue'
-import Home from '../pages/'
+import Home from '../components/Home.vue'
+import Help from '../components/Help.vue'
+import Phone from '../components/Phone.vue'
 Vue.use(Router)
+
 
 export default new Router({
   routes: [{
-    path: '/goods/:id',
-    name: 'goods',
-    component: Goods
-  }, {
-    path: '/bus',
-    name: 'bus',
-    component: Bus
-  }]
+      path: '/bus',
+      name: 'bus',
+      component: Bus
+    },
+    {
+      path: '/home',
+      name: 'home',
+      component: Home
+    },
+    {
+      path: '/help',
+      name: 'help',
+      component: Help
+    },
+    {
+      path: '/phone',
+      name: 'phone',
+      component: Phone
+    }
+
+  ]
 })
