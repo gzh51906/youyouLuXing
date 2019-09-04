@@ -4,7 +4,13 @@
       <span>西欧</span>
     </h3>
     <van-row>
-      <van-col span="12" v-for="item of getMain" :key="item.gid" class="item">
+      <van-col
+        span="12"
+        v-for="item of getMain"
+        :key="item.gid"
+        class="item"
+        @click="handleItemClick(item.gid)"
+      >
         <img :src="item.imgurl" alt class="we" />
         <p class="title1">{{item.title}}</p>
         <p class="price1">€ {{item.price}} 起</p>
@@ -16,12 +22,18 @@
 
 <script>
 export default {
+  name: "busmain",
   data() {
     return { data: {} };
   },
   computed: {
     getMain() {
       return this.$store.state.bus.westEurope;
+    }
+  },
+  methods: {
+    handleItemClick(gid) {
+      this.$router.push({ path: "/goods/" + gid });
     }
   }
 };

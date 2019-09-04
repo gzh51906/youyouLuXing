@@ -6,7 +6,6 @@
     <BusMain></BusMain>
     <BusMain></BusMain>
     <BusMain></BusMain>
-    <BusFooter></BusFooter>
   </div>
 </template>
 
@@ -15,7 +14,7 @@ import BusHeader from "../components/busheader.vue";
 import BusSearch from "../components/bussearch.vue";
 import BusSwiper from "../components/busswiper.vue";
 import BusMain from "../components/busmain.vue";
-import BusFooter from "../components/busfooter";
+
 export default {
   data() {
     return {
@@ -30,8 +29,7 @@ export default {
     BusHeader,
     BusSearch,
     BusSwiper,
-    BusMain,
-    BusFooter
+    BusMain
   },
   methods: {},
   created() {

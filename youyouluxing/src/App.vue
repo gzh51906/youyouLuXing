@@ -32,6 +32,7 @@
               replace
               icon="upgrade"
               class="routeritem"
+               @click="handleItemClick()"
             >
               返回顶端
             </van-tabbar-item>
@@ -40,7 +41,7 @@
 
   </div>
 </template>
-<script>
+<script scoped>
 import Vue from "vue";
 import Vant from "vant";
 import VueRouter from "vue-router";
@@ -72,10 +73,17 @@ export default {
         }
       ]
     };
+  },
+  methods:{
+      handleItemClick() {
+     
+          window.scrollTo(0,0);  
+      
+    }
   }
 };
 </script>
-<style >
+<style>
 .routeritem {
   padding: 17px 0;
   height: 50px;
@@ -83,8 +91,19 @@ export default {
   font-size: 16px;
 }
 
-.van-icon,
-.van-icon::before {
+.van-icon-wap-home::before {
+  display: inline-block;
+  font-size: 30px;
+}
+.van-icon-question-o::before {
+  display: inline-block;
+  font-size: 30px;
+}
+.van-icon-phone-o::before {
+  display: inline-block;
+  font-size: 30px;
+}
+.van-icon-upgrade::before {
   display: inline-block;
   font-size: 30px;
 }
