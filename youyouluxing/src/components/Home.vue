@@ -557,7 +557,7 @@ export default {
 }
 .goods-img {
   width: 100%;
-
+  max-height: 120px;
   margin-bottom: 9px;
 }
 .goods-con {
