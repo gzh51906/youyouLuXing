@@ -4,6 +4,8 @@ import Bus from '../pages/bus.vue'
 import Home from '../components/Home.vue'
 import Help from '../components/Help.vue'
 import Phone from '../components/Phone.vue'
+import Goods from '../pages/goods.vue'
+
 Vue.use(Router)
 
 
@@ -16,7 +18,8 @@ export default new Router({
     {
       path: '/home',
       name: 'home',
-      component: Home
+      component: Home,
+      
     },
     {
       path: '/help',
@@ -27,6 +30,20 @@ export default new Router({
       path: '/phone',
       name: 'phone',
       component: Phone
+    },
+    {
+      path: '/goods',
+      name: 'goods',
+      component: Goods,
+      // redirect: {
+      //   name: 'home'
+      // },
+
+      // beforeEnter(to, from, next) {
+      //   console.log('beforeEnter', to, from);
+      //   next()
+      // }
+
     }
 
   ]
