@@ -26,7 +26,7 @@ router.post('/add', async (req, res) => {
     } = req.body;
     let data
     try {
-        insert('dongougoods', {
+        insert('dongoudata', {
             title,
             src,
             sales,
@@ -50,7 +50,7 @@ router.get('/', async (req, res) => {
         limit,
         sort
     } = req.query;
-    let data = await find('dongougoods', {}, {
+    let data = await find('dongoudata', {}, {
         skip,
         limit,
         sort
@@ -65,7 +65,7 @@ router.get('/:id', async (req, res) => {
     let {
         id
     } = req.params;
-    let data = await find('dongougoods', {
+    let data = await find('dongoudata', {
         _id: id
     });
     res.send(formatData({
@@ -80,7 +80,7 @@ router.post('/attr', async (req, res) => {
     } = req.body;
     let data;
     if (attr) {
-        data = await find('dongougoods', {
+        data = await find('dongoudata', {
             attr: attr
         });
     }
@@ -96,7 +96,7 @@ router.delete('/:id', (req, res) => {
     } = req.params;
     let data
     try {
-        remove('dongougoods', {
+        remove('dongoudata', {
             _id: id
         })
         res.send(formatData())
@@ -121,7 +121,7 @@ router.patch('/:id', (req, res) => {
 
     try {
         if (title) {
-            update('dongougoods', {
+            update('dongoudata', {
                 _id: id
             }, {
                 $set: {
@@ -130,7 +130,7 @@ router.patch('/:id', (req, res) => {
             })
         }
         if (price) {
-            update('dongougoods', {
+            update('dongoudata', {
                 _id: id
             }, {
                 $set: {
@@ -139,7 +139,7 @@ router.patch('/:id', (req, res) => {
             })
         }
         if (src) {
-            update('dongougoods', {
+            update('dongoudata', {
                 _id: id
             }, {
                 $set: {
@@ -148,7 +148,7 @@ router.patch('/:id', (req, res) => {
             })
         }
         if (attr) {
-            update('dongougoods', {
+            update('dongoudata', {
                 _id: id
             }, {
                 $set: {
