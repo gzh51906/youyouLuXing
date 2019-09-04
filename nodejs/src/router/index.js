@@ -12,8 +12,8 @@ const xiougoodsRouter = require('./xiougoods');
 const nanougoodsRouter = require('./nanougoods');
 const dongougoodsRouter = require('./dongougoods');
 const userRouter = require('./user');
-
-
+const adminuserRouter = require('./adminuser');
+const mycartRouter = require('./mycart');
 
 // 利用中间bodyParse格式化请求参数
 router.use(express.json(), express.urlencoded({
@@ -36,7 +36,10 @@ router.use((req, res, next) => {
 router.use('/xiougoods', xiougoodsRouter);
 router.use('/nanougoods', nanougoodsRouter);
 router.use('/dongougoods', dongougoodsRouter);
+router.use('/adminuser', adminuserRouter);
 router.use('/user', userRouter);
+router.use('/mycart', mycartRouter);
+
 router.get('/verify', (req, res) => {
     // 获取前端传入的token
     // 对token进行校验
