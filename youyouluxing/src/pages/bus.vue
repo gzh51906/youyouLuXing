@@ -30,7 +30,6 @@ export default {
     BusSearch,
     BusSwiper,
     BusMain
-
   },
   methods: {},
   created() {
