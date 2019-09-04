@@ -99,49 +99,19 @@ router.patch('/:id', (req, res) => {
         id,
     } = req.params;
     let {
-        price,
-        title,
-        src,
-        attr
+       status
     } = req.body;
 
     try {
-        if (title) {
+     
             update('mycart', {
                 _id: id
             }, {
                 $set: {
-                    title: title
+                    status: status
                 }
             })
-        }
-        if (price) {
-            update('mycart', {
-                _id: id
-            }, {
-                $set: {
-                    price: price
-                }
-            })
-        }
-        if (src) {
-            update('mycart', {
-                _id: id
-            }, {
-                $set: {
-                    src: src
-                }
-            })
-        }
-        if (attr) {
-            update('mycart', {
-                _id: id
-            }, {
-                $set: {
-                    attr: attr
-                }
-            })
-        }
+        
         res.send(formatData())
     } catch (err) {
         res.send(formatData({
