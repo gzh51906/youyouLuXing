@@ -114,7 +114,7 @@ export default {
                     //通过 匹配成功 查询数据库
                     this.$userajax({
                       method: "post",
-                      url: "/check",
+                      url: "/user/check",
                       data: {
                         username: this.userEmail
                       }
@@ -123,7 +123,7 @@ export default {
                       if (msg === "success") {
                         this.$userajax({
                           method: "post",
-                          url: "reg",
+                          url: "/user/reg",
                           data: {
                             username: this.userEmail,
                             password: this.password

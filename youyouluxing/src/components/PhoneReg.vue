@@ -115,7 +115,7 @@ export default {
                     //通过 匹配成功 查询数据库
                     this.$userajax({
                       method: "post",
-                      url: "/check",
+                      url: "/user/check",
                       data: {
                         username: this.userPhone
                       }
@@ -124,7 +124,7 @@ export default {
                       if (msg === "success") {
                         this.$userajax({
                           method: "post",
-                          url: "reg",
+                          url: "/user/reg",
                           data: {
                             username: this.userPhone,
                             password: this.password
@@ -210,6 +210,7 @@ input {
   color: rgb(35, 204, 119);
   line-height: 52px;
   text-align: right;
+
 }
 .tishi {
   position: absolute;

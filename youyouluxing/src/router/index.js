@@ -22,128 +22,169 @@ import AwaitPayment from '../components/AwaitPayment.vue'
 import store from '../store'
 Vue.use(Router)
 
+import axios from 'axios';
 
-
- let router=new Router({
+let router = new Router({
   routes: [{
-      path: '/bus',
-      name: 'bus',
-      component: Bus
-    },
-    {
-      path: '/home',
-      name: 'home',
-      component: Home
-    },
-    {
-      path: '/help',
-      name: 'help',
-      component: Help
-    },
-    {
-      path: '/phone',
-      name: 'phone',
-      component: Phone
-    },{
-      path: '/',
-      redirect:'/home',
-      component: Phone
-    },
-    {
-      path: '/mine',
-      name:'mine',
-      component:Mine,      
-    },{
-      path: '/mine/login',
-      name: 'login',
-      component: Login,
-      meta: { requiresAuth: true }
-    },{
-      path: '/mine/reg',
-      name: 'reg',
-      component: Reg,
-      meta: { requiresAuth: true }
-    },{
-      path: '/mine/myCollection',
-      name: 'myCollection',
-      component: MyCollection,
-      meta: { requiresAuth: true }
-    },{
-      path: '/mine/myjieban',
-      name: 'myjieban',
-      component: Myjieban,
-      meta: { requiresAuth: true }
-    },{
-      path: '/mine/mynews',
-      name: 'mynews',
-      component: Mynews,
-      meta: { requiresAuth: true }
-    },{
-      path: '/mine/myorder',
-      name: 'myorder',
-      component: Myorder
-    },{
-      path: '/mine/mypintuan',
-      name: 'mypintuan',
-      component: Mypintuan,
-      meta: { requiresAuth: true }
-    },{
-      path: '/mine/myyouji',
-      name: 'myyouji',
-      component: Myyouji,
-      meta: { requiresAuth: true }
-    },{
-      path: '/mine/myzixun',
-      name: 'myzixun',
-      component: Myzixun,
-      meta: { requiresAuth: true }
-    },{
-      path: '/mine/distributor',
-      name: 'distributor',
-      component:Distributor,
-      meta: { requiresAuth: true }
-    },{
-      path: '/mine/refund',
-      name: 'refund',
-      component:Refund,
-      meta: { requiresAuth: true }
-    },{
-      path: '/mine/awaitComment',
-      name: 'awaitComment',
-      component:AwaitComment,
-      meta: { requiresAuth: true }
-    },{
-      path: '/mine/awaitConsumption',
-      name: 'awaitConsumption',
-      component:AwaitConsumption,
-      meta: { requiresAuth: true }
-    },{
-      path: '/mine/awaitPayment',
-      name: 'awaitPayment',
-      component:AwaitConsumption,
-      meta: { requiresAuth: true }
-    },{
-      path: '/mine/awaitPayment',
-      name: 'awaitPayment',
-      component:AwaitPayment,
-      meta: { requiresAuth: true }
-    }
-    
-    
+    path: '/bus',
+    name: 'bus',
+    component: Bus
+  },
+  {
+    path: '/home',
+    name: 'home',
+    component: Home
+  },
+  {
+    path: '/help',
+    name: 'help',
+    component: Help
+  },
+  {
+    path: '/phone',
+    name: 'phone',
+    component: Phone
+  }, {
+    path: '/',
+    redirect: '/home',
+    component: Phone
+  },
+  {
+    path: '/mine',
+    name: 'mine',
+    component: Mine,
+  }, {
+    path: '/mine/login',
+    name: 'login',
+    component: Login,
+    // meta: { requiresAuth: true }
+  }, {
+    path: '/mine/reg',
+    name: 'reg',
+    component: Reg,
+    meta: { requiresAuth: true }
+  }, {
+    path: '/mine/myCollection',
+    name: 'myCollection',
+    component: MyCollection,
+    meta: { requiresAuth: true }
+  }, {
+    path: '/mine/myjieban',
+    name: 'myjieban',
+    component: Myjieban,
+    meta: { requiresAuth: true }
+  }, {
+    path: '/mine/mynews',
+    name: 'mynews',
+    component: Mynews,
+    meta: { requiresAuth: true }
+  }, {
+    path: '/mine/myorder',
+    name: 'myorder',
+    component: Myorder
+  }, {
+    path: '/mine/mypintuan',
+    name: 'mypintuan',
+    component: Mypintuan,
+    meta: { requiresAuth: true }
+  }, {
+    path: '/mine/myyouji',
+    name: 'myyouji',
+    component: Myyouji,
+    meta: { requiresAuth: true }
+  }, {
+    path: '/mine/myzixun',
+    name: 'myzixun',
+    component: Myzixun,
+    meta: { requiresAuth: true }
+  }, {
+    path: '/mine/distributor',
+    name: 'distributor',
+    component: Distributor,
+    meta: { requiresAuth: true }
+  }, {
+    path: '/mine/refund',
+    name: 'refund',
+    component: Refund,
+    meta: { requiresAuth: true }
+  }, {
+    path: '/mine/awaitComment',
+    name: 'awaitComment',
+    component: AwaitComment,
+    meta: { requiresAuth: true }
+  }, {
+    path: '/mine/awaitConsumption',
+    name: 'awaitConsumption',
+    component: AwaitConsumption,
+    meta: { requiresAuth: true }
+  }, {
+    path: '/mine/awaitPayment',
+    name: 'awaitPayment',
+    component: AwaitConsumption,
+    meta: { requiresAuth: true }
+  }, {
+    path: '/mine/awaitPayment',
+    name: 'awaitPayment',
+    component: AwaitPayment,
+    meta: { requiresAuth: true }
+  }
+
+
   ]
 })
 
 export default router
 
-router.beforeEach((to,from,next)=>{
-      let res=['/home','/help','/phone','/bus']
-      let result=res.some((item)=>{return to.path===item})
-      store.commit('changeroutetoshow',result);
-      console.log(to);
-      if(to.matched.some(item=>item.meta.requiresAuth)){
-         
-          
-      }
-      next()
+const routerPush = Router.prototype.push
+Router.prototype.push = function push(location) {
+  return routerPush.call(this, location).catch(error => error)
+}
+
+
+router.beforeEach((to, from, next) => {
+  let res = ['/home', '/help', '/phone', '/bus']
+  let result = res.some((item) => { return to.path === item })
+  store.commit('changeroutetoshow', result);
+  // console.log(to);
+  if (to.matched.some(item => item.meta.requiresAuth)) {
+    let authorization = localStorage.getItem('Authorization')
+    if (authorization) {
+      // console.log('authorization',authorization);
+      //校验
+      axios.get('http://localhost:3003/verify', {
+        headers: { Authorization: authorization }
+      }).then((res) => {
+        // console.log('token', res.data.data.authorization);
+
+        if (res.data.data.authorization) {
+          //如果校验正确
+          next()
+        } else {
+          //校验不正确，跳转登陆
+          next({
+            path: '/mine/login',
+            query: {
+              targer: to.fullPath
+            }
+          })
+        }
+
+      })
+
+    } else {
+      next({
+        path: '/mine/login',
+        query: {
+          targer: to.fullPath
+        }
+
+      })
+    }
+
+  } else {
+
+    next()
+  }
+
 
 })

@@ -8,7 +8,7 @@ Vue.config.productionTip = false
 Vue.prototype.$axios = axios;
 
 let userajax=axios.create({
-  baseURL:'http://localhost:3003/user'
+  baseURL:'http://localhost:3003'
 })
 Vue.prototype.$userajax = userajax;
 new Vue({

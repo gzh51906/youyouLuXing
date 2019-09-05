@@ -97,6 +97,39 @@ router.post('/login', async (req, res) => {
         }))
     }
 })
+//动态码登录
+router.post('/dtlogin', async (req, res) => {
+    let {
+        username
+    } = req.body;
+    let data
+    try {
+        data = await find('user', {
+            username
+        });
+        //  console.log(data);
+        data = data[0];
 
+        // 生成token返回前端
+        let authorization = token.create(username);
+        if (data) {
+            res.send(formatData({
+                data: {
+                    _id: data._id,
+                    username: data.username,
+                    authorization
+                }
+            }))
+        } else {
+            res.send(formatData({
+                code: 0
+            }))
+        }
+    } catch (err) {
+        res.send(formatData({
+            code: 0
+        }))
+    }
+})
 
 module.exports = router;
