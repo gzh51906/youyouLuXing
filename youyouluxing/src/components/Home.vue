@@ -44,14 +44,14 @@
     
         <div class="detailbox">
             <van-row type="flex" justify="space-around" class="detailicon">
-              <van-col span="4" v-for='item in detailone' :key='item.text' class="detailcon-div">
+              <van-col span="4" v-for='item in detailone' :key='item.text' class="detailcon-div" @click="tobus">
                   <img :src="item.img" alt="" class="imgicon">
                  <div class="texticon"> {{item.text}}</div>
               </van-col>
              
             </van-row>
              <van-row type="flex" justify="space-around" class="detailicon" >
-              <van-col span="4" v-for='item in detailtwo' :key='item.text' class="detailcon-div">
+              <van-col span="4" v-for='item in detailtwo' :key='item.text' class="detailcon-div" @click="tobus">
                   <img :src="item.img" alt="" class="imgicon">
                  <div class="texticon"> {{item.text}}</div>
               </van-col>
@@ -421,15 +421,18 @@ export default {
     },
     changeActive(item) {
       if (item) {
-        console.log(item);
+        // console.log(item);
 
         this.active = item;
-        console.log(this.active);
+        // console.log(this.active);
       }
       this.show = false;
     },
     tomine(){
       this.$router.push('/mine')
+    },
+    tobus(){
+      this.$router.push('/bus')
     }
 
   }
