@@ -7,6 +7,7 @@ import Phone from '../components/Phone.vue'
 import Mine from '../components/Mine.vue'
 import Login from '../components/Login.vue'
 import Reg from '../components/Reg.vue'
+import Goods from '../pages/goods.vue'
 import MyCollection from '../components/MyCollection.vue'
 import Myjieban from '../components/Myjieban.vue'
 import Mynews from '../components/Mynews.vue'
@@ -22,125 +23,172 @@ import AwaitPayment from '../components/AwaitPayment.vue'
 import Myordersearch from '../components/Myordersearch.vue'
 import Myaccount from '../components/Myaccount.vue'
 import store from '../store'
+import Save from '../pages/save.vue'
+import More from '../pages/more.vue'
+import Booking from '../pages/booking.vue'
 Vue.use(Router)
 
 import axios from 'axios';
 
+
 let router = new Router({
   routes: [{
-    path: '/bus',
-    name: 'bus',
-    component: Bus
-  },
-  {
-    path: '/home',
-    name: 'home',
-    component: Home
-  },
-  {
-    path: '/help',
-    name: 'help',
-    component: Help
-  },
-  {
-    path: '/phone',
-    name: 'phone',
-    component: Phone
-  }, {
-    path: '/',
-    redirect: '/home',
-    component: Phone
-  },
-  {
-    path: '/mine',
-    name: 'mine',
-    component: Mine,
-  }, {
-    path: '/mine/login',
-    name: 'login',
-    component: Login,
-    // meta: { requiresAuth: true }
-  }, {
-    path: '/mine/reg',
-    name: 'reg',
-    component: Reg,
-    meta: { requiresAuth: true }
-  }, {
-    path: '/mine/myCollection',
-    name: 'myCollection',
-    component: MyCollection,
-    meta: { requiresAuth: true }
-  }, {
-    path: '/mine/myordersearch',
-    name: 'myordersearch',
-    component: Myordersearch
-  }, {
-    path: '/mine/myjieban',
-    name: 'myjieban',
-    component: Myjieban,
-    meta: { requiresAuth: true }
-  }, {
-    path: '/mine/myaccount',
-    name: 'myaccount',
-    component: Myaccount,
- 
-  }, {
-    path: '/mine/mynews',
-    name: 'mynews',
-    component: Mynews,
-    meta: { requiresAuth: true }
-  }, {
-    path: '/mine/myorder',
-    name: 'myorder',
-    component: Myorder,
-    meta: { requiresAuth: true }
-  }, {
-    path: '/mine/mypintuan',
-    name: 'mypintuan',
-    component: Mypintuan,
-    meta: { requiresAuth: true }
-  }, {
-    path: '/mine/myyouji',
-    name: 'myyouji',
-    component: Myyouji,
-    meta: { requiresAuth: true }
-  }, {
-    path: '/mine/myzixun',
-    name: 'myzixun',
-    component: Myzixun,
-    meta: { requiresAuth: true }
-  }, {
-    path: '/mine/distributor',
-    name: 'distributor',
-    component: Distributor,
-    meta: { requiresAuth: true }
-  }, {
-    path: '/mine/refund',
-    name: 'refund',
-    component: Refund,
-    meta: { requiresAuth: true }
-  }, {
-    path: '/mine/awaitComment',
-    name: 'awaitComment',
-    component: AwaitComment,
-    meta: { requiresAuth: true }
-  }, {
-    path: '/mine/awaitConsumption',
-    name: 'awaitConsumption',
-    component: AwaitConsumption,
-    meta: { requiresAuth: true }
-  }, {
-    path: '/mine/awaitPayment',
-    name: 'awaitPayment',
-    component: AwaitConsumption,
-    meta: { requiresAuth: true }
-  }, {
-    path: '/mine/awaitPayment',
-    name: 'awaitPayment',
-    component: AwaitPayment,
-    meta: { requiresAuth: true }
-  }
-
+      path: '/',
+      redirect: {
+        name: "home"
+      }
+    }, {
+      path: '/bus',
+      name: 'bus',
+      component: Bus,
+    }, {
+      path: '/booking',
+      name: 'booking',
+      component: Booking,
+    },
+    {
+      path: '/home',
+      name: 'home',
+      component: Home,
+    },
+    {
+      path: '/more',
+      name: 'more',
+      component: More,
+      // beforeEnter(to, from, next) {
+      //   console.log(from);
+      //   next()
+      // }
+    },
+    {
+      path: '/save',
+      name: 'save',
+      component: Save,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/help',
+      name: 'help',
+      component: Help
+    },
+    {
+      path: '/phone',
+      name: 'phone',
+      component: Phone
+    }, {
+      path: '/goods',
+      name: 'goods',
+      component: Goods
+    },
+    {
+      path: '/mine',
+      name: 'mine',
+      component: Mine,
+    }, {
+      path: '/mine/login',
+      name: 'login',
+      component: Login,
+      meta: {
+        requiresAuth: true
+      }
+    }, {
+      path: '/mine/reg',
+      name: 'reg',
+      component: Reg,
+      meta: {
+        requiresAuth: true
+      }
+    }, {
+      path: '/mine/myCollection',
+      name: 'myCollection',
+      component: MyCollection,
+      meta: {
+        requiresAuth: true
+      }
+    }, {
+      path: '/mine/myjieban',
+      name: 'myjieban',
+      component: Myjieban,
+      meta: {
+        requiresAuth: true
+      }
+    }, {
+      path: '/mine/mynews',
+      name: 'mynews',
+      component: Mynews,
+      meta: {
+        requiresAuth: true
+      }
+    }, {
+      path: '/mine/myorder',
+      name: 'myorder',
+      component: Myorder
+    }, {
+      path: '/mine/mypintuan',
+      name: 'mypintuan',
+      component: Mypintuan,
+      meta: {
+        requiresAuth: true
+      }
+    }, {
+      path: '/mine/myyouji',
+      name: 'myyouji',
+      component: Myyouji,
+      meta: {
+        requiresAuth: true
+      }
+    }, {
+      path: '/mine/myzixun',
+      name: 'myzixun',
+      component: Myzixun,
+      meta: {
+        requiresAuth: true
+      }
+    }, {
+      path: '/mine/distributor',
+      name: 'distributor',
+      component: Distributor,
+      meta: {
+        requiresAuth: true
+      }
+    }, {
+      path: '/mine/refund',
+      name: 'refund',
+      component: Refund,
+      meta: {
+        requiresAuth: true
+      }
+    }, {
+      path: '/mine/awaitComment',
+      name: 'awaitComment',
+      component: AwaitComment,
+      meta: {
+        requiresAuth: true
+      }
+    }, {
+      path: '/mine/awaitConsumption',
+      name: 'awaitConsumption',
+      component: AwaitConsumption,
+      meta: {
+        requiresAuth: true
+      }
+    }, {
+      path: '/mine/awaitPayment',
+      name: 'awaitPayment',
+      component: AwaitConsumption,
+      meta: {
+        requiresAuth: true
+      }
+    }, {
+      path: '/mine/awaitPayment',
+      name: 'awaitPayment',
+      component: AwaitPayment,
+      meta: {
+        requiresAuth: true
+      }
+    }
 
   ]
 })

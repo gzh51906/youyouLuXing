@@ -10,7 +10,7 @@ export default new Vuex.Store({
   modules: {
     bus,
     home,
-    loginuser
+    loginuser,
   }
 
 })

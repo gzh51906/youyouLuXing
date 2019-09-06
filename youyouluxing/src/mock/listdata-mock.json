@@ -1,5 +1,5 @@
 {
-    "listSwiper": [{
+    "database": [{
         "type": "大巴旅游推荐",
         "imgurl": "https://www.yoyoer.com/uploads/2019/0326/43b3fbdd1ccbc261a59127e438b9d4e4_312x212.jpg",
         "title": "[巴黎]【穷游海滩-多维尔&特鲁维尔1日】仅15欧起/人（已含司导小费）！8月3日铁发、8月4日铁发、8月17日铁发！8月3日8月4日是特鲁维尔海洋鲭鱼节！一起去多维尔Deauville低调奢华的玩耍、欣赏莫奈名画特鲁维尔TROUVILLE海岸实景！",
@@ -31,9 +31,7 @@
         "class": "大巴团",
         "data": "一日往返",
         "gid": "028"
-    }],
-
-    "westEurope": [{
+    }, {
         "type": "西欧",
         "imgurl": "https://www.yoyoer.com/uploads/2018/1213/c78b8ff052a57a8f09da9edf163adc71_330x225.jpg",
         "imgurl1": "https://www.yoyoer.com/uploads/2019/0412/a386d9cb728fa556ccf97519797427d5_750x400.jpg",
@@ -74,8 +72,7 @@
         "class": "",
         "data": "",
         "gid": "032"
-    }],
-    "southEurope": [{
+    }, {
         "type": "南欧",
         "imgurl": "https://www.yoyoer.com/uploads/2019/0619/bc87943d7d1da31124c299eaabac4f96_330x225.jpg",
         "title": "【西班牙深度一国7日】巴塞出发，每人仅需488欧元，“西行游记”，西班牙经典景点一网打尽。精选西班牙景点，感受热情之都",
@@ -107,8 +104,7 @@
         "class": "",
         "data": "",
         "gid": "036"
-    }],
-    "eastEurope": [{
+    }, {
         "type": "东欧",
         "imgurl": "https://www.yoyoer.com/uploads/2019/0607/78c9b584dcf64a7e9f08bd765fd3b271_330x225.jpg",
         "title": "【巴尔干半岛5国9天8晚】巴黎出发，每人仅售589欧，巴尔干半岛四国游，法国，德国，克罗地亚，斯洛文尼亚, 奥地利",
