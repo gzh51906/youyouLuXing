@@ -26,6 +26,8 @@ import store from '../store'
 import Save from '../pages/save.vue'
 import More from '../pages/more.vue'
 import Booking from '../pages/booking.vue'
+import AccountLogin from '../components/AccountLogin.vue'
+import Dy
 Vue.use(Router)
 
 import axios from 'axios';
@@ -203,7 +205,9 @@ Router.prototype.push = function push(location) {
 
 router.beforeEach((to, from, next) => {
   let res = ['/home', '/help', '/phone', '/bus']
-  let result = res.some((item) => { return to.path === item })
+  let result = res.some((item) => {
+    return to.path === item
+  })
   store.commit('changeroutetoshow', result);
   // console.log(to);
   if (to.matched.some(item => item.meta.requiresAuth)) {
@@ -212,7 +216,9 @@ router.beforeEach((to, from, next) => {
       // console.log('authorization',authorization);
       //校验
       axios.get('http://localhost:3003/verify', {
-        headers: { Authorization: authorization }
+        headers: {
+          Authorization: authorization
+        }
       }).then((res) => {
         // console.log('token', res.data.data.authorization);
         // console.log(res);
