@@ -10,7 +10,11 @@ Vue.prototype.$axios = axios;
 let userajax=axios.create({
   baseURL:'http://localhost:3003'
 })
+let mycart=axios.create({
+  baseURL:'http://localhost:3003/mycart'
+})
 Vue.prototype.$userajax = userajax;
+Vue.prototype.$mycart = mycart;
 new Vue({
   router,
   store,
