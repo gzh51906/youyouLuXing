@@ -1,10 +1,10 @@
 <template>
-  <div class="header">
+  <div class="bookingheader">
     <van-row>
       <van-col span="7" offset="1">
         <van-icon name="arrow-left" @click="handleIconBack()" />
       </van-col>
-      <van-col span="6" class="type" offset="2">大巴游</van-col>
+      <van-col span="7" class="type" offset="1">选择套餐和人数</van-col>
       <van-col span="3" offset="5">
         <van-icon name="bars" size="20px" class="menu" />
       </van-col>
@@ -25,9 +25,7 @@
 
 <script>
 export default {
-  data() {
-    return {};
-  },
+  name: "bookingheader",
   methods: {
     handleIconBack() {
       // 返回上一层菜单
@@ -38,16 +36,17 @@ export default {
 </script>
 
 <style scoped>
-.header {
+.bookingheader {
   width: 375px;
   position: fixed;
-  top:10;
+  top: 10;
   border-bottom: 1px solid #ccc;
   overflow: hidden;
   z-index: 20;
   /* margin-top: -10px; */
 }
 .van-row {
+  margin-top: 6px;
   background: #fff;
   /* position: fixed;
   top:10px; */
@@ -65,8 +64,8 @@ export default {
   line-height: 30px;
   text-align: center;
 }
-.menu {
-  margin-top: 8px;
+.type {
+  font-size: 15px;
 }
 .boxlist {
   width: 135px;
@@ -74,11 +73,8 @@ export default {
   border-radius: 10px;
   float: right;
   display: none;
-  /* position: absolute;
-  top: 0; */
 }
 .boxlist .van-row {
-  /* position: relative; */
   width: 135px;
   height: 46px;
   background: #263846;
@@ -90,6 +86,5 @@ export default {
 }
 i {
   margin-right: 5px;
-  /* margin-top: 10px; */
 }
 </style>

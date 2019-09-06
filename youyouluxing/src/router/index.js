@@ -7,6 +7,7 @@ import Phone from '../components/Phone.vue'
 import Mine from '../components/Mine.vue'
 import Login from '../components/Login.vue'
 import Reg from '../components/Reg.vue'
+import Goods from '../pages/goods.vue'
 import MyCollection from '../components/MyCollection.vue'
 import Myjieban from '../components/Myjieban.vue'
 import Mynews from '../components/Mynews.vue'
@@ -20,21 +21,49 @@ import AwaitComment from '../components/AwaitComment.vue'
 import AwaitConsumption from '../components/AwaitConsumption.vue'
 import AwaitPayment from '../components/AwaitPayment.vue'
 import store from '../store'
+import Save from '../pages/save.vue'
+import More from '../pages/more.vue'
+import Booking from '../pages/booking.vue'
 Vue.use(Router)
 
 
 
- let router=new Router({
+let router = new Router({
   routes: [{
+      path: '/',
+      redirect: {
+        name: "home"
+      }
+    }, {
       path: '/bus',
       name: 'bus',
-      component: Bus
+      component: Bus,
+    }, {
+      path: '/booking',
+      name: 'booking',
+      component: Booking,
     },
     {
       path: '/home',
       name: 'home',
       component: Home,
-      
+    },
+    {
+      path: '/more',
+      name: 'more',
+      component: More,
+      // beforeEnter(to, from, next) {
+      //   console.log(from);
+      //   next()
+      // }
+    },
+    {
+      path: '/save',
+      name: 'save',
+      component: Save,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/help',
@@ -45,106 +74,139 @@ Vue.use(Router)
       path: '/phone',
       name: 'phone',
       component: Phone
-    },{
-      path: '/',
-      redirect:'/home',
-      component: Phone
+    }, {
+      path: '/goods',
+      name: 'goods',
+      component: Goods
     },
     {
       path: '/mine',
-      name:'mine',
-      component:Mine,      
-    },{
+      name: 'mine',
+      component: Mine,
+    }, {
       path: '/mine/login',
       name: 'login',
       component: Login,
-      meta: { requiresAuth: true }
-    },{
+      meta: {
+        requiresAuth: true
+      }
+    }, {
       path: '/mine/reg',
       name: 'reg',
       component: Reg,
-      meta: { requiresAuth: true }
-    },{
+      meta: {
+        requiresAuth: true
+      }
+    }, {
       path: '/mine/myCollection',
       name: 'myCollection',
       component: MyCollection,
-      meta: { requiresAuth: true }
-    },{
+      meta: {
+        requiresAuth: true
+      }
+    }, {
       path: '/mine/myjieban',
       name: 'myjieban',
       component: Myjieban,
-      meta: { requiresAuth: true }
-    },{
+      meta: {
+        requiresAuth: true
+      }
+    }, {
       path: '/mine/mynews',
       name: 'mynews',
       component: Mynews,
-      meta: { requiresAuth: true }
-    },{
+      meta: {
+        requiresAuth: true
+      }
+    }, {
       path: '/mine/myorder',
       name: 'myorder',
       component: Myorder
-    },{
+    }, {
       path: '/mine/mypintuan',
       name: 'mypintuan',
       component: Mypintuan,
-      meta: { requiresAuth: true }
-    },{
+      meta: {
+        requiresAuth: true
+      }
+    }, {
       path: '/mine/myyouji',
       name: 'myyouji',
       component: Myyouji,
-      meta: { requiresAuth: true }
-    },{
+      meta: {
+        requiresAuth: true
+      }
+    }, {
       path: '/mine/myzixun',
       name: 'myzixun',
       component: Myzixun,
-      meta: { requiresAuth: true }
-    },{
+      meta: {
+        requiresAuth: true
+      }
+    }, {
       path: '/mine/distributor',
       name: 'distributor',
-      component:Distributor,
-      meta: { requiresAuth: true }
-    },{
+      component: Distributor,
+      meta: {
+        requiresAuth: true
+      }
+    }, {
       path: '/mine/refund',
       name: 'refund',
-      component:Refund,
-      meta: { requiresAuth: true }
-    },{
+      component: Refund,
+      meta: {
+        requiresAuth: true
+      }
+    }, {
       path: '/mine/awaitComment',
       name: 'awaitComment',
-      component:AwaitComment,
-      meta: { requiresAuth: true }
-    },{
+      component: AwaitComment,
+      meta: {
+        requiresAuth: true
+      }
+    }, {
       path: '/mine/awaitConsumption',
       name: 'awaitConsumption',
-      component:AwaitConsumption,
-      meta: { requiresAuth: true }
-    },{
+      component: AwaitConsumption,
+      meta: {
+        requiresAuth: true
+      }
+    }, {
       path: '/mine/awaitPayment',
       name: 'awaitPayment',
-      component:AwaitConsumption,
-      meta: { requiresAuth: true }
-    },{
+      component: AwaitConsumption,
+      meta: {
+        requiresAuth: true
+      }
+    }, {
       path: '/mine/awaitPayment',
       name: 'awaitPayment',
-      component:AwaitPayment,
-      meta: { requiresAuth: true }
+      component: AwaitPayment,
+      meta: {
+        requiresAuth: true
+      }
     }
-    
-    
+
   ]
 })
 
 export default router
 
-router.beforeEach((to,from,next)=>{
-      let res=['/home','/help','/phone','/bus']
-      let result=res.some((item)=>{return to.path===item})
-      store.commit('changeroutetoshow',result);
-      console.log(to);
-      if(to.matched.some(item=>item.meta.requiresAuth)){
-         
-          
-      }
-      next()
+router.beforeEach((to, from, next) => {
+  console.log("to: ", to);
+
+  
+  let res = ['/home', '/help', '/phone', '/bus']
+  let result = res.some((item) => {
+    return to.path === item
+  })
+  store.commit('changeroutetoshow', result);
+  if (to.matched.some(item => item.meta.requiresAuth)) {
+
+
+  };
+  // console.log(from.name);
+
+  next()
 
 })

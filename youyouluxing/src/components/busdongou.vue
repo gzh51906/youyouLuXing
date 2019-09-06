@@ -16,7 +16,7 @@
         <p class="price1">{{item.price}} 起</p>
       </van-col>
     </van-row>
-    <van-button size="small" type="warning" plain>查看更多</van-button>
+    <van-button size="small" type="warning" plain @click="handleBtnClick(url)">查看更多</van-button>
   </div>
 </template>
 
@@ -26,14 +26,17 @@
 export default {
   name: "busmain",
   data() {
-    return { data: {} };
+    return { data: {}, url: "http://localhost:3003/dongougoods" };
   },
   computed: {},
   methods: {
     handleItemClick(_id) {
       // console.log(_id);
-
-      this.$router.push({ name: "goods", query: { _id: _id } });
+      this.$router.push({ name: "goods", query: { _id: _id,url: this.url } });
+    },
+    handleBtnClick(url) {
+      // console.log(this.url);
+      this.$router.push({ name: "more", query: { url: url } });
     },
 
     getData(url) {
@@ -45,17 +48,19 @@ export default {
             data: { data }
           } = response;
           // console.log(data);
-          this.data = data.slice(0, 4);
-        //   console.log(this.data);
 
-          // data = data.map(item => {
-          //   item.src[0] = require("../assets" +
-          //     item.src[0].replace("../assets", ""));
-          //   return item;
-          // });
-          // console.log(data);
+          let data1;
+          data1 = data.map(item => {
+            let src = item.src.map(url => {
+              url = "/img/" + url;
+              return url;
+            });
+            item.src = src;
+            return item;
+          });
+          // let data2 = data1.slice(0, 4);
 
-          // this.$store.commit("getDataBase", data);
+          this.data = data1;
         })
         .catch(function(error) {
           //请求失败
@@ -64,7 +69,7 @@ export default {
   },
 
   created() {
-    this.getData("http://localhost:3003/dongougoods");
+    this.getData("http://localhost:3003/dongougoods?limit=4");
   }
 };
 </script>
@@ -88,8 +93,9 @@ h3 span {
 }
 .van-row {
   width: 360px;
-  padding: 7.5px;
-  margin-left: 8px;
+  padding:7.5px 0 7.5px 7.5px;
+  margin-left: 7px;
+  overflow: hidden;
 }
 .we {
   width: 165px !important;

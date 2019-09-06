@@ -16,7 +16,7 @@
         <p class="price1">{{item.price}} 起</p>
       </van-col>
     </van-row>
-    <van-button size="small" type="warning" plain>查看更多</van-button>
+    <van-button size="small" type="warning" plain @click="handleBtnClick(url)">查看更多</van-button>
   </div>
 </template>
 
@@ -26,14 +26,18 @@
 export default {
   name: "busmain",
   data() {
-    return { data: {} };
+    return { data: {}, url: "http://localhost:3003/nanougoods" };
   },
   computed: {},
   methods: {
     handleItemClick(_id) {
-      console.log(_id);
+      // console.log(_id);
+      this.$router.push({ name: "goods", query: { _id: _id, url: this.url } });
+    },
 
-      this.$router.push({ name: "goods", query: { _id: _id } });
+    handleBtnClick(url) {
+      // console.log(this.url);
+      this.$router.push({ name: "more", query: { url: url } });
     },
 
     getData(url) {
@@ -45,33 +49,56 @@ export default {
             data: { data }
           } = response;
           // console.log(data);
-          this.data = data.slice(0, 4);
-          // console.log(this.data);
-          
-          // data = data.map(item => {
-          //   item.src[0] = require("../assets" +
-          //     item.src[0].replace("../assets", ""));
-          //   return item;
-          // });
-          // console.log(data);
 
+          let data1;
+          data1 = data.map(item => {
+            let src = item.src.map(url => {
+              url = "/img/" + url;
+              return url;
+            });
+            item.src = src;
+            return item;
+          });
+          // let data2 = data1.slice(0, 4);
 
-          // this.$store.commit("getDataBase", data);
+          this.data = data1;
         })
         .catch(function(error) {
           //请求失败
+          // let data1;
+          // data1 = data.map(item => {
+          //   // console.log(item.src);
+          //   let src = item.src.map(url => {
+          //     let ctx = require.context(
+          //       "../assets/img/",
+          //       false,
+          //       /.+\.(?:png|jpe?g)/
+          //     );
+          //     // url = require("../assets/img/" + url);
+          //     let rpath = ctx("./" + url);
+          //     // console.log(rpath);
+          //     return rpath;
+          //   });
+          //   item.src = src;
+          //   console.log(src);
+          //   return item;
+          // });
+          // console.log("qqq", data1);
+          // this.data = data1;
+          // // console.log(this.data);
         });
     }
   },
 
   created() {
-    this.getData("http://localhost:3003/nanougoods");
+    this.getData("http://localhost:3003/nanougoods?limit=4");
   }
 };
 </script>
 
 <style scoped>
 .divClass {
+  width: 375px;
   margin-top: 10px;
 }
 h3 {
@@ -89,8 +116,9 @@ h3 span {
 }
 .van-row {
   width: 360px;
-  padding: 7.5px;
-  margin-left: 8px;
+  padding: 7.5px 0 7.5px 7.5px;
+  margin-left: 7px;
+  overflow: hidden;
 }
 .we {
   width: 165px !important;

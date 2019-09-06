@@ -11,16 +11,17 @@
         class="item"
         @click="handleItemClick(item._id)"
       >
-        <img :src="`../static/img/`+(item.src)[0]" alt class="we" />
+        <img :src="(item.src)[0]" alt class="we" />
         <p class="title1">{{item.title}}</p>
         <p class="price1">{{item.price}} 起</p>
       </van-col>
     </van-row>
-    <van-button size="small" type="warning" plain>查看更多</van-button>
+    <van-button size="small" type="warning" plain @click="handleBtnClick(url)">查看更多</van-button>
   </div>
 </template>
 
 <script>
+import { log } from "util";
 // <img src="../static/img/0a97aaffe31d317db2fc3ee34a0f9291_220x150.jpg" alt="">
 
 // <img src="../assets/img/53ad57f682c098676357ebc1cb410ddc_220x150.jpg" alt />;
@@ -28,14 +29,24 @@
 export default {
   name: "busmain",
   data() {
-    return { data: {} };
+    return {
+      data: {},
+      url: "http://localhost:3003/xiougoods"
+    };
   },
   computed: {},
   methods: {
     handleItemClick(_id) {
       // console.log(_id);
 
-      this.$router.push({ path: "/goods", query: { _id: _id } });
+      this.$router.push({ name: "goods", query: { _id: _id, url: this.url } });
+    },
+
+    handleBtnClick(url) {
+      // console.log(this.url);
+
+      this.$router.push({ name: "more", query: { url: url } });
+      // this.$store.commit("addXiOuDataUrl", this.url);
     },
 
     getData(url) {
@@ -43,22 +54,23 @@ export default {
         .get(url)
         .then(response => {
           // 请求成功
-          // console.log(response);
-
           let {
             data: { data }
           } = response;
+          // console.log(data);
 
-          // data1 = data.map(item => {
-          //   // item.src[0] = require("../assets" +
-          //   //   item.src[0].replace("../assets", ""));
-          //   // item.src = item.src.map(url => {
-          //   //   url = require("../assets" + url.replace("../assets", ""));
-          //   //   return url;
-          //   // });
-          //   return item;
-          // });
-          this.data = data.slice(0, 4);
+          let data1;
+          data1 = data.map(item => {
+            let src = item.src.map(url => {
+              url = "/img/" + url;
+              return url;
+            });
+            item.src = src;
+            return item;
+          });
+          // let data2 = data1.slice(0, 4);
+
+          this.data = data1;
           // console.log(this.data);
         })
         .catch(function(error) {
@@ -68,13 +80,14 @@ export default {
   },
 
   created() {
-    this.getData("http://localhost:3003/xiougoods");
+    this.getData("http://localhost:3003/xiougoods?limit=4");
   }
 };
 </script>
 
 <style scoped>
 .divClass {
+  width: 375px;
   margin-top: 10px;
 }
 h3 {
@@ -92,8 +105,9 @@ h3 span {
 }
 .van-row {
   width: 360px;
-  padding: 7.5px;
-  margin-left: 8px;
+  padding:7.5px 0 7.5px 7.5px;
+  margin-left: 7px;
+  overflow: hidden;
 }
 .we {
   width: 165px !important;
