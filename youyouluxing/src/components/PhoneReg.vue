@@ -16,7 +16,7 @@
             <van-col span='10' class="getyzm" @click="getyzm">获取动态验证码</van-col>      
         </van-row>
          <van-row class="inputbox">
-            <input type="text" placeholder="设置登陆密码(至少6位)" v-model="password"> 
+            <input type="password" placeholder="设置登陆密码(至少6位)" v-model="password"> 
         </van-row>
          <van-row  type="flex" class="customeragree">
             <van-checkbox class="opac" v-model="checked" checked-color="#07c160" icon-size='12'></van-checkbox>

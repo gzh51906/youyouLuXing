@@ -60,6 +60,38 @@ router.post('/check', async (req, res) => {
         }))
     }
 })
+//用户个人中心数据返回
+
+router.post('/usercontent', async (req, res) => {
+    let {
+        username
+    } = req.body;
+    let data
+    try {
+        data = await find('user', {
+            username
+        });
+        data = data[0];
+        if (data) {
+            res.send(formatData({
+                data:{
+                    dengji:'Lv.1',
+                    imgurl:'https://www.yoyoer.com/phone/public/images/member_nopic.png'
+                }
+            }))     
+        } else {
+            res.send(formatData({
+                code:0
+            }))
+        }
+    } catch (err) {
+        res.send(formatData({
+            code: 0
+        }))
+    }
+})
+
+
 
 //登录
 router.post('/login', async (req, res) => {

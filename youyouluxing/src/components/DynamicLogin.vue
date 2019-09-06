@@ -81,7 +81,7 @@ export default {
                 //成功跳转
                 let targer = this.$route.query.targer || "/mine";
 
-                this.$store.commit("login", authorization);
+                this.$store.commit("login", {authorization,username:this.username});
                 this.$router.push(targer);
               } else {
                 this.showText = "登陆失败，账号不存在!";

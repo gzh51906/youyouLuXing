@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Mytitle v-slot>我的收藏</Mytitle>
+        <Mytitle v-slot>订单查询</Mytitle>
     </div>
 </template>
 <script>

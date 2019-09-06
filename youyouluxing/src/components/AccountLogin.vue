@@ -111,7 +111,8 @@ export default {
                 //成功跳转
                    let targer = this.$route.query.targer || '/mine'
                    this.$router.push(targer)
-                 this.$store.commit('login',authorization)
+
+                 this.$store.commit('login',{authorization,username:this.username})
               } else {
                 this.showText = "登陆失败，账号或密码不正确!";
                 this.regshow();
@@ -157,7 +158,7 @@ export default {
                  //成功跳转
                    let targer = this.$route.query.targer || '/mine'
                 //    console.log('zhanghao',targer);
-                   this.$store.commit('login',authorization)
+                   this.$store.commit('login',{authorization,username:this.username})
                    this.$router.push(targer)
 
 

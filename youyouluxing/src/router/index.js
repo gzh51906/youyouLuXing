@@ -19,6 +19,8 @@ import Refund from '../components/Refund.vue'
 import AwaitComment from '../components/AwaitComment.vue'
 import AwaitConsumption from '../components/AwaitConsumption.vue'
 import AwaitPayment from '../components/AwaitPayment.vue'
+import Myordersearch from '../components/Myordersearch.vue'
+import Myaccount from '../components/Myaccount.vue'
 import store from '../store'
 Vue.use(Router)
 
@@ -69,10 +71,19 @@ let router = new Router({
     component: MyCollection,
     meta: { requiresAuth: true }
   }, {
+    path: '/mine/myordersearch',
+    name: 'myordersearch',
+    component: Myordersearch
+  }, {
     path: '/mine/myjieban',
     name: 'myjieban',
     component: Myjieban,
     meta: { requiresAuth: true }
+  }, {
+    path: '/mine/myaccount',
+    name: 'myaccount',
+    component: Myaccount,
+ 
   }, {
     path: '/mine/mynews',
     name: 'mynews',
@@ -81,7 +92,8 @@ let router = new Router({
   }, {
     path: '/mine/myorder',
     name: 'myorder',
-    component: Myorder
+    component: Myorder,
+    meta: { requiresAuth: true }
   }, {
     path: '/mine/mypintuan',
     name: 'mypintuan',
@@ -155,7 +167,7 @@ router.beforeEach((to, from, next) => {
         headers: { Authorization: authorization }
       }).then((res) => {
         // console.log('token', res.data.data.authorization);
-
+        // console.log(res);
         if (res.data.data.authorization) {
           //如果校验正确
           next()

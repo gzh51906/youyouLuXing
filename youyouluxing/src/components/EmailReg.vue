@@ -1,8 +1,10 @@
 <template>
    <div class="emailreg">
+     <!-- 邮箱 -->
          <van-row class="inputbox">
             <input type="text" placeholder="请输入电子邮箱" v-model="userEmail"> 
         </van-row>
+        <!-- 图形码 -->
         <van-row class="inputbox">
             <van-col span='18'><input type="text" placeholder="图形验证码" v-model="tuxingma"></van-col>
              <van-col span='6' class="canvasbox">
@@ -11,22 +13,26 @@
                 </div>
                 </van-col>               
         </van-row>
+        <!-- 动态验证码 -->
          <van-row class="inputbox">
             <van-col span='14'><input type="text" placeholder="获取邮箱验证码" v-model="uiyzm"></van-col>
             <van-col span='10' class="getyzm" @click="getyzm">获取动态验证码</van-col>        
         </van-row>
+        <!-- 密码 -->
          <van-row class="inputbox">
-            <input type="text" placeholder="设置登陆密码(至少6位)" v-model="password"> 
+            <input type="password" placeholder="设置登陆密码(至少6位)" v-model="password"> 
         </van-row>
+        <!-- 用户协议 -->
          <van-row  type="flex" class="customeragree">
             <van-checkbox class="opac" v-model="checked" checked-color="#07c160" icon-size='12'></van-checkbox>
             <span class="opac">同意我们的</span>
             <span>《游游用户注册协议和隐私政策》</span>
         </van-row>
+        <!-- 注册 -->
          <van-row class="reg"  @click="reg">
              注册
         </van-row>
-          
+          <!-- 错误提示 -->
          <transition name="tishi">
               <span class="tishi" v-if="show">{{showText}}</span>
          </transition>
