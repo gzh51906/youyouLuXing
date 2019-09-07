@@ -7,6 +7,7 @@ import Phone from '../components/Phone.vue'
 import Mine from '../components/Mine.vue'
 import Login from '../components/Login.vue'
 import Reg from '../components/Reg.vue'
+import Goods from '../pages/goods.vue'
 import MyCollection from '../components/MyCollection.vue'
 import Myjieban from '../components/Myjieban.vue'
 import Mynews from '../components/Mynews.vue'
@@ -22,9 +23,14 @@ import AwaitPayment from '../components/AwaitPayment.vue'
 import Myordersearch from '../components/Myordersearch.vue'
 import Myaccount from '../components/Myaccount.vue'
 import store from '../store'
+import Save from '../pages/save.vue'
+import More from '../pages/more.vue'
+import Booking from '../pages/booking.vue'
+
 Vue.use(Router)
 
 import axios from 'axios';
+
 
 let router = new Router({
   routes: [{
@@ -49,7 +55,7 @@ let router = new Router({
   }, {
     path: '/',
     redirect: '/home',
-    component: Phone
+    component: Home
   },
   {
     path: '/mine',
@@ -59,7 +65,7 @@ let router = new Router({
     path: '/mine/login',
     name: 'login',
     component: Login,
-    // meta: { requiresAuth: true }
+  
   }, {
     path: '/mine/reg',
     name: 'reg',
@@ -132,15 +138,35 @@ let router = new Router({
   }, {
     path: '/mine/awaitPayment',
     name: 'awaitPayment',
-    component: AwaitConsumption,
-    meta: { requiresAuth: true }
-  }, {
-    path: '/mine/awaitPayment',
-    name: 'awaitPayment',
     component: AwaitPayment,
     meta: { requiresAuth: true }
-  }
-
+  },{
+      path: '/booking',
+      name: 'booking',
+      component: Booking,
+    },
+    {
+      path: '/more',
+      name: 'more',
+      component: More,
+      // beforeEnter(to, from, next) {
+      //   console.log(from);
+      //   next()
+      // }
+    },
+    {
+      path: '/save',
+      name: 'save',
+      component: Save,
+      meta: {
+        requiresAuth: true
+      }
+    },
+     {
+      path: '/goods',
+      name: 'goods',
+      component: Goods
+    }
 
   ]
 })
@@ -155,7 +181,9 @@ Router.prototype.push = function push(location) {
 
 router.beforeEach((to, from, next) => {
   let res = ['/home', '/help', '/phone', '/bus']
-  let result = res.some((item) => { return to.path === item })
+  let result = res.some((item) => {
+    return to.path === item
+  })
   store.commit('changeroutetoshow', result);
   // console.log(to);
   if (to.matched.some(item => item.meta.requiresAuth)) {
@@ -164,7 +192,9 @@ router.beforeEach((to, from, next) => {
       // console.log('authorization',authorization);
       //校验
       axios.get('http://localhost:3003/verify', {
-        headers: { Authorization: authorization }
+        headers: {
+          Authorization: authorization
+        }
       }).then((res) => {
         // console.log('token', res.data.data.authorization);
         // console.log(res);

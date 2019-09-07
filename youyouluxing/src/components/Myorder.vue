@@ -98,11 +98,8 @@ export default {
         this.changestatus(data);
         // console.log(data);
       });
-    },onelist(){
-
     },
     changestatus(data) {
-      // 把1=='待付款'
       if (data[0]) {
         //如果有数据
         this.havelist = true;
@@ -145,7 +142,7 @@ export default {
           this.activelist();
         } else {
           // 如果是待付款
-          this.$mycart.post("/status", { status: 1 }).then(res => {
+          this.$mycart.post("/status", { status: 1 }).then(res => {                    
             let { data: { data } } = res;
             this.changestatus(data);
           });
@@ -185,6 +182,7 @@ export default {
          }
       })
     }
+    
   },
   created() {
     this.activelist();
@@ -204,18 +202,12 @@ export default {
   background: #ffffff;
   margin: 10px 0;
 }
-.paytime {
-  height: 30px;
-  font-size: 12px;
-  line-height: 30px;
-  padding: 0 15px;
-  color: #666666;
-  border-bottom: 1px solid #f3f3f3;
-}
+
 .paycontentbox {
   padding: 0 10px;
 }
 .paycontent {
+
   padding: 10px 0;
   border-bottom: 1px solid #f3f3f3;
 }
@@ -224,6 +216,7 @@ export default {
   width: 100%;
   max-height: 100%;
 }
+
 .paycontent-title {
   padding-left: 15px;
 }
@@ -246,6 +239,7 @@ export default {
 .price-span {
   color: orangered;
 }
+
 .payprice-right {
   text-align: right;
 }
@@ -256,9 +250,7 @@ export default {
   color: #666666;
   font-size: 14px;
 }
-.paystatus-right {
-  text-align: right;
-}
+
 .failpay {
   display: inline-block;
   background: #cccccc;
@@ -268,6 +260,7 @@ export default {
   font-size: 12px;
   line-height: 12px;
 }
+
 .successpay {
   display: inline-block;
   background: #ee4b45;
@@ -277,6 +270,19 @@ export default {
   font-size: 12px;
   line-height: 12px;
   margin-left: 5px;
+}
+
+.paytime {
+  height: 30px;
+  font-size: 12px;
+  line-height: 30px;
+  padding: 0 15px;
+  color: #666666;
+  border-bottom: 1px solid #f3f3f3;
+}
+
+.paystatus-right {
+  text-align: right;
 }
 .theend {
   text-align: center;

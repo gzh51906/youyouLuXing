@@ -42,6 +42,7 @@ export default {
 .swiperBox {
   margin-top: 10px;
   width: 375px;
+  overflow: hidden;
 }
 .van-swipe {
   padding: 15px;
