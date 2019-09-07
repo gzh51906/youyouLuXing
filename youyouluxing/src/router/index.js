@@ -64,7 +64,7 @@ let router = new Router({
     path: '/mine/reg',
     name: 'reg',
     component: Reg,
-    meta: { requiresAuth: true }
+
   }, {
     path: '/mine/myCollection',
     name: 'myCollection',
