@@ -60,7 +60,7 @@
       </van-tabs>
       <!-- <ul class="type-box">
         <li v-for="item of goodslist" :key="item.type" class="type" >{{item.type}}</li>
-      </ul> -->
+      </ul>-->
     </div>
     <GoodsFooter></GoodsFooter>
   </div>
@@ -122,31 +122,35 @@ export default {
     };
   },
   methods: {
-    // getDetails(id) {}
+    // 子组件向父组件触发事件，父组件接收@aaa="jump"
+    // jump() {
+    //   this.$router.push({ name: "save" });
+    // }
   },
 
   async created() {
     let url = this.$route.query.url;
     // console.log(url);
+    let urlQuery = url.split("?")[0];
+    // console.log(urlQuery);
 
     let { _id } = this.$route.query;
     // console.log(_id);
 
     let {
       data: { data }
-    } = await this.$axios.get(`${url}/${_id}`);
+    } = await this.$axios.get(`${urlQuery}/${_id}`);
     data[0].src = data[0].src.map(url => {
       return `/img/${url}`;
     });
     this.data = data[0];
     // console.log(this.data);
-  },
-
-  // 路由组件守卫
-  beforeRouteEnter(to, from, next) {
-    console.log(from);
-    next();
   }
+  // 路由组件守卫
+  // beforeRouteEnter(to, from, next) {
+  //   console.log(from);
+  //   next();
+  // }
 };
 </script>
 

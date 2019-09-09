@@ -31,7 +31,7 @@ export default {
   data() {
     return {
       data: {},
-      url: "http://localhost:3003/xiougoods"
+      url: "http://localhost:3003/xiougoods?limit=20"
     };
   },
   computed: {},
@@ -45,7 +45,7 @@ export default {
     handleBtnClick(url) {
       // console.log(this.url);
 
-      this.$router.push({ name: "more", query: { url: url } });
+      this.$router.push({ name: "more", query: { url: this.url } });
       // this.$store.commit("addXiOuDataUrl", this.url);
     },
 
@@ -105,7 +105,7 @@ h3 span {
 }
 .van-row {
   width: 360px;
-  padding:7.5px 0 7.5px 7.5px;
+  padding: 7.5px 0 7.5px 7.5px;
   margin-left: 7px;
   overflow: hidden;
 }

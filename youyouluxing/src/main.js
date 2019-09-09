@@ -6,12 +6,13 @@ import axios from 'axios';
 
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios;
+// Vue.prototype.$bus = new Vue()
 
-let userajax=axios.create({
-  baseURL:'http://localhost:3003'
+let userajax = axios.create({
+  baseURL: 'http://localhost:3003'
 })
-let mycart=axios.create({
-  baseURL:'http://localhost:3003/mycart'
+let mycart = axios.create({
+  baseURL: 'http://localhost:3003/mycart'
 })
 Vue.prototype.$userajax = userajax;
 Vue.prototype.$mycart = mycart;

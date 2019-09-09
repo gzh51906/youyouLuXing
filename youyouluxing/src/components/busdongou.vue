@@ -69,7 +69,7 @@ export default {
   },
 
   created() {
-    this.getData("http://localhost:3003/dongougoods?limit=4");
+    this.getData(`${this.url}?limit=4`);
   }
 };
 </script>

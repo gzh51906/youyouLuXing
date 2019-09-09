@@ -37,6 +37,7 @@ export default {
   name: "morefooter",
   data() {
     return {
+      url: "",
       value2: "a",
       option2: [
         { text: "综合排序", value: "a" },
@@ -49,7 +50,7 @@ export default {
   },
   methods: {
     seleteRank() {
-      // console.log(this.url);
+      console.log(this.url);
       // this.$store.commit("addDataUrl",this.url)
     }
   },

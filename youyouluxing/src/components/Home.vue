@@ -1,145 +1,179 @@
 <template>
-    <div class='home'>
-        <!-- 头部 logo -->
-        <van-row type="flex" justify="space-between" align='center' class="header">
-            <van-col span="6" offset='1'>
-                <img src="https://www.yoyoer.com/uploads/2018/1221/35530b4e70fa28566b7e91d0e257deb3.png" alt="" class="logo">
-            </van-col>
-            <van-col span="2">
-             
-                  <van-icon name="friends-o" size='20px' color='#1989fa' @click="tomine"/>
-              
-                </van-col>
+  <div class="home">
+    <!-- 头部 logo -->
+    <van-row type="flex" justify="space-between" align="center" class="header">
+      <van-col span="6" offset="1">
+        <img
+          src="https://www.yoyoer.com/uploads/2018/1221/35530b4e70fa28566b7e91d0e257deb3.png"
+          alt
+          class="logo"
+        />
+      </van-col>
+      <van-col span="2">
+        <van-icon name="friends-o" size="20px" color="#1989fa" @click="tomine" />
+      </van-col>
+    </van-row>
+    <!-- 轮播图 -->
+    <van-swipe :autoplay="3000" :height="175">
+      <van-swipe-item v-for="item in banner" :key="item">
+        <img :src="item" alt width="100%" />
+      </van-swipe-item>
+    </van-swipe>
+    <!-- 搜索弹出框 -->
+    <div class="ejectbox">
+      <van-row type="flex" align="center" class="searchbox">
+        <van-col span="6">
+          <van-button type="primary" @click="showPopup" class="eject">
+            {{active}}
+            <van-icon name="arrow-down" size="7px" class="eject-icon" />
+            <span class="eject-line"></span>
+          </van-button>
+          <!-- 弹出 -->
+          <van-popup v-model="show" class="showbox">
+            <van-col
+              span="24"
+              class="showbox-list"
+              v-for="item in showContent"
+              :key="item"
+              :class="{active:active===item}"
+              @click="changeActive(item)"
+            >{{item}}</van-col>
+          </van-popup>
+        </van-col>
+        <van-col span="14">
+          <input type="text" class="search" placeholder="穷游" />
+        </van-col>
+        <van-col span="2" class="searchicon">
+          <van-icon name="search" size="21px" />
+        </van-col>
+      </van-row>
+    </div>
+    <!-- 跳转详情页图标 -->
+
+    <div class="detailbox">
+      <van-row type="flex" justify="space-around" class="detailicon">
+        <van-col
+          span="4"
+          v-for="item in detailone"
+          :key="item.text"
+          class="detailcon-div"
+          @click="tobus"
+        >
+          <img :src="item.img" alt class="imgicon" />
+          <div class="texticon">{{item.text}}</div>
+        </van-col>
+      </van-row>
+      <van-row type="flex" justify="space-around" class="detailicon">
+        <van-col
+          span="4"
+          v-for="item in detailtwo"
+          :key="item.text"
+          class="detailcon-div"
+          @click="tobus"
+        >
+          <img :src="item.img" alt class="imgicon" />
+          <div class="texticon">{{item.text}}</div>
+        </van-col>
+      </van-row>
+    </div>
+
+    <!-- 特价优惠 -->
+    <div>
+      <h3 class="title-name">
+        <span class="line"></span>
+        <span>特价优惠</span>
+      </h3>
+      <div>
+        <van-row type="flex" justify="center" class="youhui">
+          <van-col span="12">
+            <img
+              src="https://www.yoyoer.com/uploads/2019/0603/7126657e32d7ef689c5a98934b0f3a6a_375x340.jpg"
+              alt
+              class
+            />
+          </van-col>
+          <van-col span="12">
+            <div>
+              <img
+                src="https://www.yoyoer.com/uploads/2019/0603/4c3187cbda2b156f7ee3f2be1bb8a70c_375x170.jpg"
+                alt
+              />
+            </div>
+            <div>
+              <img
+                src="https://www.yoyoer.com/uploads/2019/0603/8550a2392d23c4f7438af29431d69189_375x170.jpg"
+                alt
+              />
+            </div>
+          </van-col>
         </van-row>
-        <!-- 轮播图 -->
-        <van-swipe :autoplay="3000" :height='175'>
-            <van-swipe-item v-for='item in banner' :key='item'>
-              <img :src="item" alt="" width="100%">
-            </van-swipe-item>
-        </van-swipe>
-        <!-- 搜索弹出框 -->
-        <div class="ejectbox">
-            <van-row type="flex" align='center' class='searchbox'>
-                <van-col span="6">
-                    <van-button type="primary" @click="showPopup" class="eject">
-                        {{active}}                     
-                        <van-icon  name="arrow-down" size='7px' class="eject-icon"/>
-                        <span class="eject-line"></span>
-                  </van-button>
-                    <!-- 弹出 -->
-                    <van-popup v-model="show" class="showbox">
-                        <van-col span="24" class="showbox-list" v-for='item in showContent' :key='item' :class='{active:active===item}' @click='changeActive(item)'>{{item}}</van-col>
-                    </van-popup>
-                </van-col>
-                <van-col span="14">
-                    <input type="text"  class='search' placeholder="穷游">
-                </van-col>
-                <van-col span="2" class='searchicon'>
-                    <van-icon name="search" size='21px'/>
-                </van-col>
-            </van-row>
-
-        </div>
-         <!-- 跳转详情页图标 -->
-    
-        <div class="detailbox">
-            <van-row type="flex" justify="space-around" class="detailicon">
-              <van-col span="4" v-for='item in detailone' :key='item.text' class="detailcon-div" @click="tobus">
-                  <img :src="item.img" alt="" class="imgicon">
-                 <div class="texticon"> {{item.text}}</div>
-              </van-col>
-             
-            </van-row>
-             <van-row type="flex" justify="space-around" class="detailicon" >
-              <van-col span="4" v-for='item in detailtwo' :key='item.text' class="detailcon-div" @click="tobus">
-                  <img :src="item.img" alt="" class="imgicon">
-                 <div class="texticon"> {{item.text}}</div>
-              </van-col>
-             
-            </van-row>
-        </div>
-       
-        <!-- 特价优惠 -->
-        <div >
-            <h3 class="title-name">
-              <span class="line"></span>
-              <span>特价优惠</span>
-              </h3>
-            <div>           
-                <van-row type="flex" justify="center" class="youhui">
-                  <van-col span="12">
-                    <img src="https://www.yoyoer.com/uploads/2019/0603/7126657e32d7ef689c5a98934b0f3a6a_375x340.jpg" alt="" class="">
-                  </van-col>
-                  <van-col span="12">
-                    <div><img src="https://www.yoyoer.com/uploads/2019/0603/4c3187cbda2b156f7ee3f2be1bb8a70c_375x170.jpg" alt=""></div>
-                    <div><img src="https://www.yoyoer.com/uploads/2019/0603/8550a2392d23c4f7438af29431d69189_375x170.jpg" alt=""></div>
-                  </van-col>
-                </van-row>
-            </div>
-        </div>
-        <!-- 大巴游等 -->
-        <div class="goodsbox">
-          <div v-for='item in goodsname' :key='item' class="goods-listbox">
-            <div v-if='item!="活动"'>
-              <h3 class="title-name">
-                <span class="line"></span>
-                <span>{{item}}</span>
-                </h3>
-             <van-row type="flex" justify="space-around" class="goodslist">
-              <van-col span="10"  v-for="goodsitem in goods" :key='goodsitem.gid' v-if='item===goodsitem.type'>
-                   <div class="goodsimg-box">
-                  <img :src="goodsitem.img" alt="" class="goods-img" />
-               </div>
-                <p class="goods-con">{{goodsitem.details}}</p>
-                <div class="goods-price">
-                  <!-- {{goodsitem.price}}
-                  {{typeof(goodsitem.price)}} -->
-                  <p v-if='typeof(goodsitem.price)==="number"'>€{{goodsitem.price.toFixed(2)}}起</p>
-                  <p v-else> {{goodsitem.price}}</p>
-
-                </div>
-                
-              </van-col>        
-            </van-row>
-            <div class='morelist'>
-              <span>查看更多</span>
-            </div>
-            </div>
-            <div v-else>
-              <h3 class="title-name">
-                <span class="line"></span>
-                <span>{{item}}</span>
-                </h3>
-              <van-row type="flex" justify="space-around" class="goodslist">
-              <van-col span="22"  v-for="goodsitem in goods" :key='goodsitem.gid' v-if='item===goodsitem.type'>
-             
-                  <img :src="goodsitem.img" alt="" class="goods-img" />
-               
-                <p class="goods-con">{{goodsitem.details}}</p>
-                <div class="goods-price">
-                  <!-- {{goodsitem.price}}
-                  {{typeof(goodsitem.price)}} -->
-                  <p v-if='typeof(goodsitem.price)==="number"'>€{{goodsitem.price.toFixed(2)}}起</p>
-                  <p v-else> {{goodsitem.price}}</p>
-
-                </div>
-                
-              </van-col>    
-              
-            </van-row>
-             <div class='morelist'>
-               <span>查看更多</span>
-               
-               </div>   
-            </div>
-             
+      </div>
+    </div>
+    <!-- 大巴游等 -->
+    <div class="goodsbox">
+      <div v-for="item in goodsname" :key="item" class="goods-listbox">
+        <div v-if="item!='活动'">
+          <h3 class="title-name">
+            <span class="line"></span>
+            <span>{{item}}</span>
+          </h3>
+          <van-row type="flex" justify="space-around" class="goodslist">
+            <van-col
+              span="10"
+              v-for="goodsitem in goods"
+              :key="goodsitem.gid"
+              v-if="item===goodsitem.type"
+            >
+              <div class="goodsimg-box">
+                <img :src="goodsitem.img" alt class="goods-img" />
+              </div>
+              <p class="goods-con">{{goodsitem.details}}</p>
+              <div class="goods-price">
+                <!-- {{goodsitem.price}}
+                {{typeof(goodsitem.price)}}-->
+                <p v-if="typeof(goodsitem.price)==='number'">€{{goodsitem.price.toFixed(2)}}起</p>
+                <p v-else>{{goodsitem.price}}</p>
+              </div>
+            </van-col>
+          </van-row>
+          <div class="morelist">
+            <span>查看更多</span>
           </div>
         </div>
-       
-      
+        <div v-else>
+          <h3 class="title-name">
+            <span class="line"></span>
+            <span>{{item}}</span>
+          </h3>
+          <van-row type="flex" justify="space-around" class="goodslist">
+            <van-col
+              span="22"
+              v-for="goodsitem in goods"
+              :key="goodsitem.gid"
+              v-if="item===goodsitem.type"
+            >
+              <img :src="goodsitem.img" alt class="goods-img" />
+
+              <p class="goods-con">{{goodsitem.details}}</p>
+              <div class="goods-price">
+                <!-- {{goodsitem.price}}
+                {{typeof(goodsitem.price)}}-->
+                <p v-if="typeof(goodsitem.price)==='number'">€{{goodsitem.price.toFixed(2)}}起</p>
+                <p v-else>{{goodsitem.price}}</p>
+              </div>
+            </van-col>
+          </van-row>
+          <div class="morelist">
+            <span>查看更多</span>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </template>
 <script>
+// import BS from 'better-scroll'
+
 export default {
   data() {
     return {
@@ -428,13 +462,12 @@ export default {
       }
       this.show = false;
     },
-    tomine(){
-      this.$router.push('/mine')
+    tomine() {
+      this.$router.push("/mine");
     },
-    tobus(){
-      this.$router.push('/bus')
+    tobus() {
+      this.$router.push("/bus");
     }
-
   }
 };
 </script>

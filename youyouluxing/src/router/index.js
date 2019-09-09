@@ -27,7 +27,8 @@ import Save from '../pages/save.vue'
 import More from '../pages/more.vue'
 import Booking from '../pages/booking.vue'
 import AccountLogin from '../components/AccountLogin.vue'
-import Dy
+import DynamicLogin from '../components/DynamicLogin.vue'
+import Service from '../components/service'
 Vue.use(Router)
 
 import axios from 'axios';
@@ -76,6 +77,14 @@ let router = new Router({
       component: Help
     },
     {
+      path: '/service',
+      name: 'service',
+      component: Service,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
       path: '/phone',
       name: 'phone',
       component: Phone
@@ -92,16 +101,16 @@ let router = new Router({
       path: '/mine/login',
       name: 'login',
       component: Login,
-      meta: {
-        requiresAuth: true
-      }
+      // meta: {
+      //   requiresAuth: true
+      // }
     }, {
       path: '/mine/reg',
       name: 'reg',
       component: Reg,
-      meta: {
-        requiresAuth: true
-      }
+      // meta: {
+      //   requiresAuth: true
+      // }
     }, {
       path: '/mine/myCollection',
       name: 'myCollection',
@@ -204,13 +213,15 @@ Router.prototype.push = function push(location) {
 
 
 router.beforeEach((to, from, next) => {
-  let res = ['/home', '/help', '/phone', '/bus']
+  let res = ['/home', '/help', '/phone', '/bus', '/save']
   let result = res.some((item) => {
     return to.path === item
   })
   store.commit('changeroutetoshow', result);
-  // console.log(to);
   if (to.matched.some(item => item.meta.requiresAuth)) {
+    // console.log/(222);
+    console.log(to, 'from', from);
+
     let authorization = localStorage.getItem('Authorization')
     if (authorization) {
       // console.log('authorization',authorization);
@@ -221,7 +232,7 @@ router.beforeEach((to, from, next) => {
         }
       }).then((res) => {
         // console.log('token', res.data.data.authorization);
-        // console.log(res);
+        console.log(res);
         if (res.data.data.authorization) {
           //如果校验正确
           next()
@@ -243,14 +254,15 @@ router.beforeEach((to, from, next) => {
         query: {
           targer: to.fullPath
         }
-
       })
     }
-
   } else {
-
     next()
-  }
+  };
+  // if (to.name === 'login') {
+  //   next()
+  //   return
+  // }
 
 
 })

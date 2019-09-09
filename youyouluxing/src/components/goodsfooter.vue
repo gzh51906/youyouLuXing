@@ -7,7 +7,7 @@
         class="service"
         @click="handleServiceClick"
       />
-      <van-goods-action-icon icon="like-o" text="收藏" class="save" @click="handleSaveClick" />
+      <van-goods-action-icon icon="like-o" text="收藏" class="save" @click.stop="handleSaveClick" />
       <van-goods-action-button
         color="#58BC58"
         type="warning"
@@ -30,9 +30,15 @@ export default {
   methods: {
     handleServiceClick() {
       console.log("service");
+      this.$router.push({ name: "service" });
     },
     handleSaveClick() {
-      console.log("save");
+      // console.log("save");
+
+      // 向上触发父组件(goods.vue)的aaa自定义事件
+      // this.$emit("aaa");
+
+      //编程时导航
       this.$router.push({ name: "save" });
     },
     handleBookingClick() {

@@ -43,7 +43,7 @@ export default {
   border-bottom: 1px solid #ccc;
   overflow: hidden;
   z-index: 20;
-  /* margin-top: -10px; */
+  margin-top: -7px;
 }
 .van-row {
   margin-top: 6px;

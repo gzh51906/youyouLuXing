@@ -1,8 +1,8 @@
 <template>
   <div class="more">
     <BusHeader></BusHeader>
+    <!-- <test></test> -->
     <MoreMain :url="url"></MoreMain>
-    <!-- <MoreFooter ></MoreFooter> -->
   </div>
 </template>
 
@@ -10,6 +10,8 @@
 import BusHeader from "../components/busheader.vue";
 import MoreFooter from "../components/morefooter.vue";
 import MoreMain from "../components/moremain.vue";
+// import test from "./test";
+
 export default {
   name: "more",
   data() {
@@ -18,7 +20,8 @@ export default {
   components: {
     BusHeader,
     MoreFooter,
-    MoreMain
+    MoreMain,
+    // test
   },
   created() {
     let { url } = this.$route.query;

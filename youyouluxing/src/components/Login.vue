@@ -32,6 +32,10 @@ export default {
      change(name){
         this.iscomponent=name
      }
+ },
+ created(){
+    console.log(12321);
+    
  }
 };
 </script>
