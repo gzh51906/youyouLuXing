@@ -2,7 +2,7 @@
 
     <div id="app">
       <router-view></router-view>
-    <div v-show="change">
+    <div v-show="change" class="footbox">
          <!-- 模块 -->
         <div class="footer">      
             <div class="xieyi">
@@ -122,6 +122,7 @@ export default {
   display: inline-block;
   font-size: 30px;
 }
+
 .footer {
   padding-top: 9px;
   background: #ffffff;

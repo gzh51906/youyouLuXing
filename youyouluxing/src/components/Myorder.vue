@@ -34,9 +34,25 @@
                             <!-- 下单状态 -->
                             <van-row class="paystatus">
                                 <van-col span='12'>订单状态：{{item.status}}</van-col>
+                                <!-- 根据订单状态生成按钮 -->
                                 <van-col span='12' class="paystatus-right">
-                                    <span class="failpay" @click="removepay(item._id)">取消订单</span>
-                                    <span class="successpay">去付款</span>
+                                  <div v-if='item.status==="待付款"'>
+                                     <span class="failpay" @click="removepay(item._id)">取消订单</span>
+                                     <span class="successpay" @click="topay(item.id)">去付款</span>
+                                  </div>
+                                  <div v-else-if='item.status==="待消费"'>
+                                     <span class="failpay" @click='torefund(item._id)'>退款</span>
+                                     <span class="successpay">去使用</span>
+                                  </div>
+                                  <div v-else-if='item.status==="待点评"'>
+                                     <!-- <span class="failpay">评论</span> -->
+                                     <span class="successpay">评论</span>
+                                  </div>
+                                  <div v-else-if='item.status==="退款"'>
+                                     <!-- <span class="failpay"></span> -->
+                                     <span class="successpay">已退款</span>
+                                  </div>
+                                   
                                 </van-col>
                             </van-row>
                       </div>
@@ -76,6 +92,7 @@ export default {
 
   methods: {
     activelist() {
+      // 获取全部的请求
       this.$mycart.get().then(res => {
         let { data: { data } } = res;
         this.changestatus(data);
@@ -106,6 +123,7 @@ export default {
       this.list = data;
     },
     onClick(name, title) {
+      // 发送请求获取数据
       if (name == 0) {
         // 如果是全部
         this.activelist();
@@ -118,18 +136,53 @@ export default {
       }
     },
     removepay(id) {
+      // 取消订单
       this.$mycart.delete(`/${id}`).then(res => {
         if (this.active == 0) {
           this.activelist();
         } else {
-          // 不是全部
-          this.$mycart.post("/status", { status: name }).then(res => {
+          // 如果是待付款
+          this.$mycart.post("/status", { status: 1 }).then(res => {                    
             let { data: { data } } = res;
             this.changestatus(data);
           });
         }
       });
+    },
+   torefund(id) {
+      // 退款  改变状态  待消费==》退款
+     this.$mycart({
+        url: `/${id}`,
+        method: "patch",
+        data: {
+          status: 4
+        }
+      }).then(res=>{
+         if(res.data.msg=='success'){
+           this.active=4;
+           this.onClick(4,'退款')
+         }
+      })
+   
+
+      // this.active=4;
     }
+    ,topay(id){
+      // 去付款 改变状态  待付款==》 待消费
+        this.$mycart({
+        url: `/${id}`,
+        method: "patch",
+        data: {
+          status: 1
+        }
+      }).then(res=>{
+         if(res.data.msg=='success'){
+           this.active=1;
+           this.onClick(1,'待消费')
+         }
+      })
+    }
+    
   },
   created() {
     this.activelist();
@@ -149,18 +202,12 @@ export default {
   background: #ffffff;
   margin: 10px 0;
 }
-.paytime {
-  height: 30px;
-  font-size: 12px;
-  line-height: 30px;
-  padding: 0 15px;
-  color: #666666;
-  border-bottom: 1px solid #f3f3f3;
-}
+
 .paycontentbox {
   padding: 0 10px;
 }
 .paycontent {
+
   padding: 10px 0;
   border-bottom: 1px solid #f3f3f3;
 }
@@ -169,6 +216,7 @@ export default {
   width: 100%;
   max-height: 100%;
 }
+
 .paycontent-title {
   padding-left: 15px;
 }
@@ -191,6 +239,7 @@ export default {
 .price-span {
   color: orangered;
 }
+
 .payprice-right {
   text-align: right;
 }
@@ -201,9 +250,7 @@ export default {
   color: #666666;
   font-size: 14px;
 }
-.paystatus-right {
-  text-align: right;
-}
+
 .failpay {
   display: inline-block;
   background: #cccccc;
@@ -213,6 +260,7 @@ export default {
   font-size: 12px;
   line-height: 12px;
 }
+
 .successpay {
   display: inline-block;
   background: #ee4b45;
@@ -222,6 +270,19 @@ export default {
   font-size: 12px;
   line-height: 12px;
   margin-left: 5px;
+}
+
+.paytime {
+  height: 30px;
+  font-size: 12px;
+  line-height: 30px;
+  padding: 0 15px;
+  color: #666666;
+  border-bottom: 1px solid #f3f3f3;
+}
+
+.paystatus-right {
+  text-align: right;
 }
 .theend {
   text-align: center;
