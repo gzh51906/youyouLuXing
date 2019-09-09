@@ -1,10 +1,15 @@
 <template>
     <div>
-       phone
+       <Helptitle v-slot>客服</Helptitle>
 
     </div>
 
 </template>
 <script>
-export default {};
+import Helptitle from './Helptitle.vue'
+export default {
+    components:{
+        Helptitle
+    }
+};
 </script>

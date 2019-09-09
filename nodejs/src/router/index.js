@@ -23,7 +23,7 @@ router.use(express.json(), express.urlencoded({
 router.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
-    res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
+    res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS,PATCH");
     if (req.method == "OPTIONS") { // 在预请求中告诉浏览器这里允许跨域，让她发真实的请求过来吧
         res.sendStatus(200);
         // 等效于：res.status(200).send()
