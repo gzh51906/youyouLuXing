@@ -220,9 +220,11 @@ input {
 }
 .orderlogin {
   position: absolute;
-  bottom: 0;
+
   left: 0;
   right: 0;
+  background: #ffffff;
+  margin-top: 10px;
 }
 .orderlogin-name {
   padding: 23px 0;

@@ -15,7 +15,7 @@
                             <div class="paycontentbox"> 
                                 <van-row class="paycontent">
                                     <van-col span='10' class="paycontent-img">
-                                        <img :src="item.src[0]" alt="">
+                                        <img :src="item.src[1]" alt="">
                                     </van-col>
                                     <van-col span='14' class="paycontent-title">
                                             <p>{{item.title}}</p>
@@ -104,16 +104,16 @@ export default {
         //如果有数据
         this.havelist = true;
         data.forEach(element => {
-          if (element.status == 1) {
+          if (element.status == '1') {
             element.status = "待付款";
           }
-          if (element.status == 2) {
+          if (element.status == '2') {
             element.status = "待消费";
           }
-          if (element.status == 3) {
+          if (element.status == '3') {
             element.status = "待点评";
           }
-          if (element.status == 4) {
+          if (element.status == '4') {
             element.status = "退款";
           }
         });
@@ -129,7 +129,7 @@ export default {
         this.activelist();
       } else {
         // 不是全部
-        this.$mycart.post("/status", { status: name }).then(res => {
+        this.$mycart.post("/status", { status: String(name) }).then(res => {
           let { data: { data } } = res;
           this.changestatus(data);
         });
@@ -142,7 +142,7 @@ export default {
           this.activelist();
         } else {
           // 如果是待付款
-          this.$mycart.post("/status", { status: 1 }).then(res => {                    
+          this.$mycart.post("/status", { status: '1' }).then(res => {                    
             let { data: { data } } = res;
             this.changestatus(data);
           });
@@ -155,7 +155,7 @@ export default {
         url: `/${id}`,
         method: "patch",
         data: {
-          status: 4
+          status: '4'
         }
       }).then(res=>{
          if(res.data.msg=='success'){
@@ -173,7 +173,7 @@ export default {
         url: `/${id}`,
         method: "patch",
         data: {
-          status: 1
+          status: '1'
         }
       }).then(res=>{
          if(res.data.msg=='success'){
