@@ -99,7 +99,7 @@ router.patch('/:id', (req, res) => {
         id,
     } = req.params;
   let {status}=req.body
-    console.log('req',status);
+    // console.log('req',status);
 
     try {
 

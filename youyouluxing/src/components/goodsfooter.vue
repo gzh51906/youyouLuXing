@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     handleServiceClick() {
-      console.log("service");
+      // console.log("service");
       this.$router.push({ name: "service" });
     },
     handleSaveClick() {
@@ -42,7 +42,7 @@ export default {
       this.$router.push({ name: "save" });
     },
     handleBookingClick() {
-      console.log("booking");
+      // console.log("booking");
       this.$router.push({ name: "booking" });
     }
   }

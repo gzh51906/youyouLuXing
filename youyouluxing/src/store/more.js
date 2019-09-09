@@ -6,10 +6,10 @@ export default {
     getters: {},
     mutations: {
         addDataUrl(state, url) {
-            console.log(url);
+            // console.log(url);
 
             state.dataUrl = `${url}?sort=price&asc=true`;
-            console.log(state.dataUrl);
+            // console.log(state.dataUrl);
             
         }
 

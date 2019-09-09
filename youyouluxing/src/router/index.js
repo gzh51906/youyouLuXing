@@ -196,7 +196,7 @@ router.beforeEach((to, from, next) => {
   store.commit('changeroutetoshow', result);
   if (to.matched.some(item => item.meta.requiresAuth)) {
     // console.log/(222);
-    console.log(to, 'from', from);
+    // console.log(to, 'from', from);
 
     let authorization = localStorage.getItem('Authorization')
     if (authorization) {
@@ -208,7 +208,7 @@ router.beforeEach((to, from, next) => {
         }
       }).then((res) => {
         // console.log('token', res.data.data.authorization);
-        console.log(res);
+        // console.log(res);
         if (res.data.data.authorization) {
           //如果校验正确
           next()
