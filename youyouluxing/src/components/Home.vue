@@ -137,7 +137,7 @@
             </van-col>
           </van-row>
           <div class="morelist">
-            <span>查看更多</span>
+            <span @click="tobus">查看更多</span>
           </div>
         </div>
         <div v-else>
@@ -164,7 +164,7 @@
             </van-col>
           </van-row>
           <div class="morelist">
-            <span>查看更多</span>
+            <span @click="tobus">查看更多</span>
           </div>
         </div>
       </div>
