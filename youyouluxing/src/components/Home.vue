@@ -177,59 +177,55 @@
 export default {
   data() {
     return {
-      logourl:'/img/logo.png',
       goodsname: [],
-      phoneurl:'/img/phone-float.png',
       show: false,
-      tejiaimg:['/img/index.jpg','/img/index2.jpg','/img/index3.jpg'],
       active: "大巴游",
       showContent: ["大巴游", "邮轮", "度假", "门票", "活动"],
       banner: [
-        "/img/856c94190ad678bf9b0d8c6d8a336a82_750x320.jpg",
-        "/img/1e4ec352cd5d2ec59c413d62fc66ef14_750x320.jpg",
-        "/img/ca692d1a8d9922cb6a1d2f6ed63955db_750x320.jpg",
-        "/img/4cb18699a757addaaa1a50a7f14eb3b8_750x320.jpg",
-        "/img/b6debc5eb01edd8e18b179b3b4bafda9_750x320.png",
-        '/img/f700afc9cdeccaa60e3fdf7e189c970f_750x320.jpg'
+        "https://www.yoyoer.com/uploads/2019/0724/f700afc9cdeccaa60e3fdf7e189c970f_750x320.jpg",
+        "https://www.yoyoer.com/uploads/2019/0827/1e4ec352cd5d2ec59c413d62fc66ef14_750x320.jpg",
+        "https://www.yoyoer.com/uploads/2019/0827/ca692d1a8d9922cb6a1d2f6ed63955db_750x320.jpg",
+        "https://www.yoyoer.com/uploads/2018/1212/4cb18699a757addaaa1a50a7f14eb3b8_750x320.jpg",
+        "https://www.yoyoer.com/uploads/2019/0521/b6debc5eb01edd8e18b179b3b4bafda9_750x320.png"
       ],
       detailone: [
         {
-          img: "/img/menu_ico02.png",
+          img: "https://www.yoyoer.com/phone/public/images/menu_ico02.png",
           text: "大巴游"
         },
         {
-          img: "/img/menu_ico104.png",
+          img: "https://www.yoyoer.com/phone/public/images/menu_ico104.png",
           text: "游轮"
         },
         {
-          img: "/img/menu_ico01.png",
+          img: "https://www.yoyoer.com/phone/public/images/menu_ico01.png",
           text: "度假"
         },
         {
-          img: "/img/menu_ico03.png",
+          img: "https://www.yoyoer.com/phone/public/images/menu_ico03.png",
           text: "门票"
         },
         {
-          img: "/img/menu_ico08.png",
+          img: "https://www.yoyoer.com/phone/public/images/menu_ico08.png",
           text: "私人定制"
         }
       ],
       detailtwo: [
         {
-          img: "/img/menu_ico12.png",
+          img: "https://www.yoyoer.com/phone/public/images/menu_ico12.png",
           text: "问答"
         },
         {
-          img: "/img/menu_no_ico.png",
+          img: "https://www.yoyoer.com/uploads/menu_no_ico.png",
           text: "专题"
         },
         {
-          img: "/img/menu_ico114.png",
+          img: "https://www.yoyoer.com/phone/public/images/menu_ico114.png",
           text: "活动"
         },
         {
           img:
-            "/img/6b9c1d9ed8cacaabf69c4a4b0cd7d461.png",
+            "https://www.yoyoer.com/uploads/2019/0731/6b9c1d9ed8cacaabf69c4a4b0cd7d461.png",
           text: "店面导航"
         },
         {
@@ -247,7 +243,7 @@ export default {
             "【穷游海滩-多维尔&特鲁维尔1日】仅15欧起/人（已含司导小费）！8月3日铁发、8月4日铁发、8月17日铁发！8月3日8月4日是特鲁维尔海洋鲭鱼节！一起去多维尔Deauville低调奢华的玩耍、欣赏莫奈名画特鲁维尔TROUVILLE海岸实景！",
           price: "电询",
           img:
-            "/img/529628a16e8d4d3abf35180af1778f81_330x225.jpg"
+            "https://www.yoyoer.com/uploads/2019/0326/43b3fbdd1ccbc261a59127e438b9d4e4_330x225.jpg"
         },
         {
           gid: "002",
@@ -257,7 +253,7 @@ export default {
             "【穷游莫奈花园&奥维1日】巴黎出发！单人仅售15欧起（已含司导小费）！原价75欧的莫奈花园&奥维一日游！参观梵高最后的故居奥维小镇，寻找梵高画中实景！游览莫奈花园！法国历史文化风情等你来体验！",
           price: 15.0,
           img:
-            "/img/7f053f72b83d288bc7a10c5aa87f2ea0_330x225.png"
+            "https://www.yoyoer.com/uploads/2019/0307/1fa2d5bff3556a4f8914899bd724a1b7_330x225.jpg"
         },
         {
           gid: "003",
@@ -268,7 +264,7 @@ export default {
             "【经典东欧6国9日壮丽情怀之旅C线】巴黎出发，多团期可选。东欧六国九日风情之旅, 金色布拉格、多瑙河上的明珠布达佩斯、音乐之都维也纳、邮票之都列支敦士登、水晶之城因斯布鲁克! ",
           price: 469,
           img:
-            "/img/697eb50ca9720205567927a0a330c38c_330x225.jpg"
+            "https://www.yoyoer.com/uploads/2019/0404/b63215413280d07f5bc6b9a205fa6b9e_330x225.jpg"
         },
         {
           gid: "004",
@@ -279,7 +275,7 @@ export default {
             "【全新瑞意7日(五渔村)】巴黎出发，每人仅售469欧起！多团期可选！法国瑞士意大利(五渔村)7日深度精华游！日内瓦，勃朗峰，罗马，威尼斯，五渔村！七日带您畅游瑞意！",
           price: 15.0,
           img:
-            "/img/9f29c2d204d2c133e6e884ec74896357_330x225.jpg"
+            "https://www.yoyoer.com/uploads/2018/1217/529628a16e8d4d3abf35180af1778f81_330x225.jpg"
         },
         {
           gid: "005",
@@ -290,7 +286,7 @@ export default {
           price: 529.0,
           date: "出发时间：2019-09-28",
           img:
-            "/img/e021d4b45385a06fc84efeacfd8e3694_330x225.jpg"
+            "https://www.yoyoer.com/uploads/2019/0108/88616bec38cce671df4258f62ed653e9_330x225.jpg"
         },
         {
           gid: "006",
@@ -301,7 +297,7 @@ export default {
           price: 499.0,
           date: "出发时间：2019-10-02",
           img:
-            "/img/cd4deea4228dba9479e73abf11be7d5a_330x225.jpg"
+            "https://www.yoyoer.com/uploads/2019/0108/fd8aed1ddf947828a536929761012f5d_330x225.jpeg"
         },
         {
           gid: "007",
@@ -312,7 +308,7 @@ export default {
           price: 799.0,
           date: "出发时间：2019-09-07",
           img:
-            "/img/a8acac8456de321ddeac046bde0ee032_330x225.jpg"
+            "https://www.yoyoer.com/uploads/2019/0108/41a12741dc84566a8f418c76234413d5_330x225.jpg"
         },
         {
           gid: "008",
@@ -323,7 +319,7 @@ export default {
           price: "电询",
           date: "",
           img:
-            "/img/88616bec38cce671df4258f62ed653e9_330x225.jpg"
+            "https://www.yoyoer.com/uploads/2019/0108/fd8aed1ddf947828a536929761012f5d_330x225.jpeg"
         },
         {
           gid: "009",
@@ -333,7 +329,7 @@ export default {
           details: "【戛纳度假村，18欧起/人/晚， 专属于你的美丽传说】",
           price: "电询",
           img:
-            "/img/fb4f6784376b66ba7e672bc5489b82a8_330x225.jpg"
+            "https://www.yoyoer.com/uploads/2019/0516/fb4f6784376b66ba7e672bc5489b82a8_330x225.jpg"
         },
         {
           gid: "010",
@@ -344,7 +340,7 @@ export default {
             "【西班牙梅诺卡岛度假村，8天7夜，一价式全含，单人仅638欧起！】超低价4星级酒店，感受西班牙风情！",
           price: "电询",
           img:
-            "/img/b5c69dd0551ca68be66639cd49257ff4_330x225.jpg"
+            "https://www.yoyoer.com/uploads/2019/0524/b5c69dd0551ca68be66639cd49257ff4_330x225.jpg"
         },
         {
           gid: "011",
@@ -355,7 +351,7 @@ export default {
             "【克里特岛Sitia Beach 度假村， 7天6晚，一价式全包，887欧/人起！】有海有山有峡谷，有世界尽头；神话般的异域风情；惊艳的料理；精品酒店服务；不是天堂似天堂！",
           price: "电询",
           img:
-            "/img/ef769277d721f572168a91fbc436a3cd_330x225.jpg"
+            "https://www.yoyoer.com/uploads/2019/0425/ef769277d721f572168a91fbc436a3cd_330x225.jpg"
         },
         {
           gid: "012",
@@ -364,7 +360,7 @@ export default {
           details: "普罗旺斯Pont Royal度假村8天7晚",
           price: "电询",
           img:
-            "/img/594bbe291d4b16bf74862e6c38150b2e_330x225.jpg"
+            "https://www.yoyoer.com/uploads/2019/0621/594bbe291d4b16bf74862e6c38150b2e_330x225.jpg"
         },
         {
           gid: "017",
@@ -374,7 +370,7 @@ export default {
           details: "巴黎迪士尼乐园 Disneyland Paris",
           price: 48.0,
           img:
-            "/img/3a35e3c1b08b37471f7a39a19c44a22c_330x225.png"
+            "https://www.yoyoer.com/uploads/2019/0402/3a35e3c1b08b37471f7a39a19c44a22c_330x225.png"
         },
         {
           gid: "018",
@@ -384,7 +380,7 @@ export default {
           details: "狂人国门票 Puy du Fou",
           price: 15.0,
           img:
-            "/img/71b0c5d831a26ef015c60834a67bd45b_330x225.jpg"
+            "https://www.yoyoer.com/uploads/2019/0610/71b0c5d831a26ef015c60834a67bd45b_330x225.jpg"
         },
         {
           gid: "019",
@@ -393,7 +389,7 @@ export default {
           details: "巴黎水族馆 Aquarium de Paris",
           price: 11.0,
           img:
-            "/img/4994d370da051dca71393350fcf9cf5e_330x225.jpg"
+            "https://www.yoyoer.com/uploads/2018/1206/4994d370da051dca71393350fcf9cf5e_330x225.jpg"
         },
         {
           gid: "020",
@@ -402,7 +398,7 @@ export default {
           details: "巴黎观光巴士 Open Tour 2日游单人通票",
           price: 16.0,
           img:
-            "/img/c7fa67c6781dba7cdb25c689ca9db568_330x225.jpg"
+            "https://www.yoyoer.com/uploads/2019/0410/c7fa67c6781dba7cdb25c689ca9db568_330x225.jpg"
         },
         {
           gid: "021",
@@ -412,7 +408,7 @@ export default {
             "【意想不到的夏天】安纳西户外  三天两晚体验活动 露营，烧烤，滑翔伞，皮划艇，溪降, Segway",
           price: 295.0,
           img:
-            "/img/a8d2240e5d29e4a7fad341fd68d6e0bc_450x225.jpg"
+            "https://www.yoyoer.com/uploads/2019/0606/a8d2240e5d29e4a7fad341fd68d6e0bc_450x225.jpg"
         },
         {
           gid: "022",
@@ -422,7 +418,7 @@ export default {
             "【Let's 潜水，暑期多个团期可选】 在这个初夏潜逃到另一个充满不同色彩，环境和稀奇古怪的新世界！",
           price: 580.0,
           img:
-            "/img/2e407b2f1d653785b148311ebd52b30c_450x225.jpg"
+            "https://www.yoyoer.com/uploads/2019/0725/2e407b2f1d653785b148311ebd52b30c_450x225.jpg"
         },
         {
           gid: "023",
@@ -431,7 +427,7 @@ export default {
           details: "絕色莫文蔚世界巡迴演唱會巴黎站 新欧洲购票通道",
           price: 68.0,
           img:
-            "/img/8d3244efeea4a412aa5d89a2c0743a7d_450x225.png"
+            "https://www.yoyoer.com/uploads/2019/0619/8d3244efeea4a412aa5d89a2c0743a7d_450x225.png"
         },
         {
           gid: "024",
@@ -440,7 +436,7 @@ export default {
           details: "2019圣诞滑雪季-CHARMONIX UCPA",
           price: 568.0,
           img:
-            "/img/2d248c2703a954ec77502494ecc78089_450x225.png"
+            "https://www.yoyoer.com/uploads/2019/0628/2d248c2703a954ec77502494ecc78089_450x225.png"
         }
       ]
     };
@@ -644,22 +640,6 @@ export default {
   line-height: 38px;
   color: #ff6b1a;
   border: 1px solid #e9e9e9;
-}
-.call{
-  position: fixed;
-  width: 32px;
-  height: 32px;
-  background: rgba(0, 192, 255, 0.81);
-  left:15px ;
-  top: 80%;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 99;
-}
-.call img{
-  width: 18px;
 }
 </style>
 
