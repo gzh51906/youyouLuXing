@@ -63,11 +63,12 @@ let router = new Router({
     path: '/mine',
     name: 'mine',
     component: Mine,
+
   }, {
     path: '/mine/login',
     name: 'login',
     component: Login,
-  
+
   }, {
     path: '/mine/reg',
     name: 'reg',
@@ -91,7 +92,7 @@ let router = new Router({
     path: '/mine/myaccount',
     name: 'myaccount',
     component: Myaccount,
- 
+
   }, {
     path: '/mine/mynews',
     name: 'mynews',
@@ -132,6 +133,7 @@ let router = new Router({
     name: 'awaitComment',
     component: AwaitComment,
     meta: { requiresAuth: true }
+
   }, {
     path: '/mine/awaitConsumption',
     name: 'awaitConsumption',
@@ -142,157 +144,38 @@ let router = new Router({
     name: 'awaitPayment',
     component: AwaitPayment,
     meta: { requiresAuth: true }
-  },{
-      path: '/booking',
-      name: 'booking',
-      component: Booking,
-    },
-    {
-      path: '/more',
-      name: 'more',
-      component: More,
-      // beforeEnter(to, from, next) {
-      //   console.log(from);
-      //   next()
-      // }
-    },
-    {
-      path: '/save',
-      name: 'save',
-      component: Save,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: '/help',
-      name: 'help',
-      component: Help
-    },
-    {
-      path: '/service',
-      name: 'service',
-      component: Service,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      path: '/phone',
-      name: 'phone',
-      component: Phone
-    }, {
-      path: '/goods',
-      name: 'goods',
-      component: Goods
-    },
-    {
-      path: '/mine',
-      name: 'mine',
-      component: Mine,
-    }, {
-      path: '/mine/login',
-      name: 'login',
-      component: Login,
-      // meta: {
-      //   requiresAuth: true
-      // }
-    }, {
-      path: '/mine/reg',
-      name: 'reg',
-      component: Reg,
-      // meta: {
-      //   requiresAuth: true
-      // }
-    }, {
-      path: '/mine/myCollection',
-      name: 'myCollection',
-      component: MyCollection,
-      meta: {
-        requiresAuth: true
-      }
-    }, {
-      path: '/mine/myjieban',
-      name: 'myjieban',
-      component: Myjieban,
-      meta: {
-        requiresAuth: true
-      }
-    }, {
-      path: '/mine/mynews',
-      name: 'mynews',
-      component: Mynews,
-      meta: {
-        requiresAuth: true
-      }
-    }, {
-      path: '/mine/myorder',
-      name: 'myorder',
-      component: Myorder
-    }, {
-      path: '/mine/mypintuan',
-      name: 'mypintuan',
-      component: Mypintuan,
-      meta: {
-        requiresAuth: true
-      }
-    }, {
-      path: '/mine/myyouji',
-      name: 'myyouji',
-      component: Myyouji,
-      meta: {
-        requiresAuth: true
-      }
-    }, {
-      path: '/mine/myzixun',
-      name: 'myzixun',
-      component: Myzixun,
-      meta: {
-        requiresAuth: true
-      }
-    }, {
-      path: '/mine/distributor',
-      name: 'distributor',
-      component: Distributor,
-      meta: {
-        requiresAuth: true
-      }
-    }, {
-      path: '/mine/refund',
-      name: 'refund',
-      component: Refund,
-      meta: {
-        requiresAuth: true
-      }
-    }, {
-      path: '/mine/awaitComment',
-      name: 'awaitComment',
-      component: AwaitComment,
-      meta: {
-        requiresAuth: true
-      }
-    }, {
-      path: '/mine/awaitConsumption',
-      name: 'awaitConsumption',
-      component: AwaitConsumption,
-      meta: {
-        requiresAuth: true
-      }
-    }, {
-      path: '/mine/awaitPayment',
-      name: 'awaitPayment',
-      component: AwaitConsumption,
-      meta: {
-        requiresAuth: true
-      }
-    }, {
-      path: '/mine/awaitPayment',
-      name: 'awaitPayment',
-      component: AwaitPayment,
-      meta: {
-        requiresAuth: true
-      }
+  }, {
+    path: '/booking',
+    name: 'booking',
+    component: Booking,
+  },
+  {
+    path: '/more',
+    name: 'more',
+    component: More,
+
+  },
+  {
+    path: '/save',
+    name: 'save',
+    component: Save,
+    meta: {
+      requiresAuth: true
     }
+  },
+  {
+    path: '/service',
+    name: 'service',
+    component: Service,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/goods',
+    name: 'goods',
+    component: Goods
+  }
 
   ]
 })
