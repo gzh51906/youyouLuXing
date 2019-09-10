@@ -1,32 +1,32 @@
 <template>
-    <div>
-         <van-row class="inputbox">
-            <input type="text" placeholder="请输入手机号码前加国际区号（如：法国33）" v-model="username"> 
-        </van-row>
-        <van-row class="inputbox">
-             <van-col span='14'><input type="text" placeholder="请输入短信验证码" v-model="uiyzm"></van-col>
-            <van-col span='10' class="getyzm" @click="getyzm">获取动态验证码</van-col>     
-        </van-row>
-        <van-row class="login" @click="login">
-             登陆
-         </van-row>
-         <van-row type="flex" justify="center" class="toreg">
-            <van-col span="6" class="newreg">注册新用户</van-col>
-            <van-col span="6">找回密码</van-col>            
-        </van-row>
-        <!-- 底部定位 -->
-        <div class="orderlogin">
-            <van-divider :style="{borderColor: '#cccccc',margin:'0px' }" :hairline='false'>其他方式登陆</van-divider>
-             <van-row class="orderlogin-name" type="flex" justify="center">
-               <img :src='weiboimgurl' alt=""/>
-             </van-row>
-        </div>
-
-         <transition name="tishi">
-              <span class="tishi" v-show="show">{{showText}}</span>
-         </transition>
-
+  <div>
+    <van-row class="inputbox">
+      <input type="text" placeholder="请输入手机号码前加国际区号（如：法国33）" v-model="username">
+    </van-row>
+    <van-row class="inputbox">
+      <van-col span='14'><input type="text" placeholder="请输入短信验证码" v-model="uiyzm"></van-col>
+      <van-col span='10' class="getyzm" @click="getyzm">获取动态验证码</van-col>
+    </van-row>
+    <van-row class="login" @click="login">
+      登陆
+    </van-row>
+    <van-row type="flex" justify="center" class="toreg">
+      <van-col span="6" class="newreg" @click='toreg'>注册新用户</van-col>
+      <van-col span="6">找回密码</van-col>
+    </van-row>
+    <!-- 底部定位 -->
+    <div class="orderlogin">
+      <van-divider :style="{borderColor: '#cccccc',margin:'0px' }" :hairline='false'>其他方式登陆</van-divider>
+      <van-row class="orderlogin-name" type="flex" justify="center">
+        <img :src='weiboimgurl' alt="" />
+      </van-row>
     </div>
+
+    <transition name="tishi">
+      <span class="tishi" v-show="show">{{showText}}</span>
+    </transition>
+
+  </div>
 </template>
 <script>
 export default {
@@ -41,6 +41,9 @@ export default {
     };
   },
   methods: {
+    toreg() {
+      this.$router.push("/mine/reg");
+    },
     regshow() {
       this.show = true;
       setTimeout(() => {
@@ -81,7 +84,10 @@ export default {
                 //成功跳转
                 let targer = this.$route.query.targer || "/mine";
 
-                this.$store.commit("login", {authorization,username:this.username});
+                this.$store.commit("login", {
+                  authorization,
+                  username: this.username
+                });
                 this.$router.push(targer);
               } else {
                 this.showText = "登陆失败，账号不存在!";
@@ -134,10 +140,10 @@ input {
 }
 .orderlogin {
   position: absolute;
- 
+
   left: 0;
   right: 0;
-   background: #ffffff;
+  background: #ffffff;
   margin-top: 10px;
 }
 .orderlogin-name {

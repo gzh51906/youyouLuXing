@@ -83,7 +83,7 @@ export default {
             dengji: res.data.data.dengji || "Lv.1",
             imgurl:
               res.data.data.imgurl ||
-              "https://www.yoyoer.com/phone/public/images/member_nopic.png"
+              "/img/member_nopic.png"
           };
         }
       }

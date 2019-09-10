@@ -29,6 +29,7 @@ import Booking from '../pages/booking.vue'
 import AccountLogin from '../components/AccountLogin.vue'
 import DynamicLogin from '../components/DynamicLogin.vue'
 import Service from '../components/service'
+import Successtoful from '../components/Successtoful.vue'
 Vue.use(Router)
 
 import axios from 'axios';
@@ -175,6 +176,11 @@ let router = new Router({
     path: '/goods',
     name: 'goods',
     component: Goods
+  },
+  {
+    path: '/successtoful/:id',
+    name: 'successtoful',
+    component:Successtoful
   }
 
   ]

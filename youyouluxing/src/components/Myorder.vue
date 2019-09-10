@@ -38,7 +38,7 @@
                                 <van-col span='12' class="paystatus-right">
                                   <div v-if='item.status==="待付款"'>
                                      <span class="failpay" @click="removepay(item._id)">取消订单</span>
-                                     <span class="successpay" @click="topay(item.id)">去付款</span>
+                                     <span class="successpay" @click="topay(item._id)">去付款</span>
                                   </div>
                                   <div v-else-if='item.status==="待消费"'>
                                      <span class="failpay" @click='torefund(item._id)'>退款</span>
@@ -50,7 +50,7 @@
                                   </div>
                                   <div v-else-if='item.status==="退款"'>
                                      <!-- <span class="failpay"></span> -->
-                                     <span class="successpay">已退款</span>
+                                     <span class="successpay">待退款</span>
                                   </div>
                                    
                                 </van-col>
@@ -173,12 +173,12 @@ export default {
         url: `/${id}`,
         method: "patch",
         data: {
-          status: '1'
+          status: '2'
         }
       }).then(res=>{
          if(res.data.msg=='success'){
-           this.active=1;
-           this.onClick(1,'待消费')
+           this.active=2;
+           this.onClick(2,'待消费')
          }
       })
     }

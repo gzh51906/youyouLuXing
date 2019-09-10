@@ -1,10 +1,13 @@
 # 游游旅行
 
 ## 上线
-   * 官网：https://www.yoyoer.com/phone/
+   * 官网：[https://www.yoyoer.com/phone/](https://www.yoyoer.com/phone/)    
    * 上线地址：
    * 后台管理系统：
-   * githup地址：git@github.com:gzh51906/youyouLuXing.git  
+   * githup地址：[git@github.com:gzh51906/youyouLuXing.git](git@github.com:gzh51906/youyouLuXing.git)  
+
+## 项目类型
+   * 旅游
 
 ## 团队与分工
    * 组长：陈观钦
