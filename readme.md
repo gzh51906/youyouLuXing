@@ -2,8 +2,8 @@
 
 ## 上线
    * 官网：[https://www.yoyoer.com/phone/](https://www.yoyoer.com/phone/)    
-   * 上线地址：
-   * 后台管理系统：
+   * 上线地址：[https://http://47.98.56.8:3003](https://http://47.98.56.8:3003)
+   * 后台管理系统：[https://http://47.98.56.8:3004](https://http://47.98.56.8:3004) 
    * githup地址：[git@github.com:gzh51906/youyouLuXing.git](git@github.com:gzh51906/youyouLuXing.git)  
 
 ## 项目类型
