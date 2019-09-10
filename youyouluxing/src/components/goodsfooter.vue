@@ -45,6 +45,13 @@ export default {
       // console.log("booking");
       this.$router.push({ name: "booking" });
     }
+  },
+  mounted() {
+    this.$bus.$on("getData", data => {
+      this.data = data;
+      console.log(this.data);
+    });
+
   }
 };
 </script>

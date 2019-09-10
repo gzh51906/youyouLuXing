@@ -6,7 +6,8 @@ import axios from 'axios';
 
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios;
-// Vue.prototype.$bus = new Vue()
+
+Vue.prototype.$bus = new Vue()
 
 let userajax = axios.create({
   baseURL: 'http://localhost:3003'

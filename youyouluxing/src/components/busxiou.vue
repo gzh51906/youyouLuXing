@@ -22,9 +22,6 @@
 
 <script>
 import { log } from "util";
-// <img src="../static/img/0a97aaffe31d317db2fc3ee34a0f9291_220x150.jpg" alt="">
-
-// <img src="../assets/img/53ad57f682c098676357ebc1cb410ddc_220x150.jpg" alt />;
 
 export default {
   name: "busmain",

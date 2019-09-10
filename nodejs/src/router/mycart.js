@@ -15,16 +15,24 @@ const {
 
 //增加订单
 router.post('/add', async (req, res) => {
+
+
     let {
         title,
         src,
         price,
         num,
-        status
+        status,
+        total,
+        oldprice,
+        sales,
+        pay,
+        time,
+        _id,
+        type
     } = req.body;
     try {
         let total = (price.slice(1)) * num
-        // console.log(total);
         if (!status) {
             status = "0";
         }
@@ -34,7 +42,14 @@ router.post('/add', async (req, res) => {
             price,
             num,
             status,
-            total
+            total,
+            oldprice,
+            sales,
+            pay,
+            time,
+            title,
+            _id,
+            type
         });
         res.send(formatData())
     } catch (err) {
