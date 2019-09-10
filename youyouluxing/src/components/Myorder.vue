@@ -1,4 +1,4 @@
-<template>
+F<template>
     <div class="myorder">
         <Mytitle v-slot>我的订单</Mytitle>
         <van-tabs v-model="active" class="myorder-box" @click="onClick" :swipe-threshold='5' color='rgb(86, 150, 247)' line-width='20%' line-height='2px' title-active-color='rgb(86, 150, 247)'>
@@ -15,7 +15,7 @@
                             <div class="paycontentbox"> 
                                 <van-row class="paycontent">
                                     <van-col span='10' class="paycontent-img">
-                                        <img :src="item.src[0]" alt="">
+                                        <img :src="item.src[1]" alt="">
                                     </van-col>
                                     <van-col span='14' class="paycontent-title">
                                             <p>{{item.title}}</p>
@@ -38,7 +38,7 @@
                                 <van-col span='12' class="paystatus-right">
                                   <div v-if='item.status==="待付款"'>
                                      <span class="failpay" @click="removepay(item._id)">取消订单</span>
-                                     <span class="successpay" @click="topay(item.id)">去付款</span>
+                                     <span class="successpay" @click="topay(item._id)">去付款</span>
                                   </div>
                                   <div v-else-if='item.status==="待消费"'>
                                      <span class="failpay" @click='torefund(item._id)'>退款</span>
@@ -50,7 +50,7 @@
                                   </div>
                                   <div v-else-if='item.status==="退款"'>
                                      <!-- <span class="failpay"></span> -->
-                                     <span class="successpay">已退款</span>
+                                     <span class="successpay">待退款</span>
                                   </div>
                                    
                                 </van-col>
@@ -104,16 +104,16 @@ export default {
         //如果有数据
         this.havelist = true;
         data.forEach(element => {
-          if (element.status == 1) {
+          if (element.status == '1') {
             element.status = "待付款";
           }
-          if (element.status == 2) {
+          if (element.status == '2') {
             element.status = "待消费";
           }
-          if (element.status == 3) {
+          if (element.status == '3') {
             element.status = "待点评";
           }
-          if (element.status == 4) {
+          if (element.status == '4') {
             element.status = "退款";
           }
         });
@@ -129,7 +129,7 @@ export default {
         this.activelist();
       } else {
         // 不是全部
-        this.$mycart.post("/status", { status: name }).then(res => {
+        this.$mycart.post("/status", { status: String(name) }).then(res => {
           let { data: { data } } = res;
           this.changestatus(data);
         });
@@ -142,7 +142,7 @@ export default {
           this.activelist();
         } else {
           // 如果是待付款
-          this.$mycart.post("/status", { status: 1 }).then(res => {                    
+          this.$mycart.post("/status", { status: '1' }).then(res => {                    
             let { data: { data } } = res;
             this.changestatus(data);
           });
@@ -155,7 +155,7 @@ export default {
         url: `/${id}`,
         method: "patch",
         data: {
-          status: 4
+          status: '4'
         }
       }).then(res=>{
          if(res.data.msg=='success'){
@@ -173,12 +173,12 @@ export default {
         url: `/${id}`,
         method: "patch",
         data: {
-          status: 1
+          status: '2'
         }
       }).then(res=>{
          if(res.data.msg=='success'){
-           this.active=1;
-           this.onClick(1,'待消费')
+           this.active=2;
+           this.onClick(2,'待消费')
          }
       })
     }

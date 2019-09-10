@@ -84,7 +84,7 @@ export default {
     routeshow(){
        let res=['/home','/help','/phone','/bus']
        let result=res.some((item)=>{return this.$route.path===item})
-       console.log(mine);
+      //  console.log(mine);
       // this.routefootertoshow=result
     }
 

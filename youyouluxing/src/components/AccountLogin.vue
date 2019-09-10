@@ -21,7 +21,7 @@
          </van-row>
       
          <van-row type="flex" justify="center" class="toreg">
-            <van-col span="6" class="newreg">注册新用户</van-col>
+            <van-col span="6" class="newreg" @click='toreg'>注册新用户</van-col>
             <van-col span="6">找回密码</van-col>            
         </van-row>
         <!-- 底部定位 -->
@@ -62,6 +62,9 @@ export default {
     this.refreshCode();
   },
   methods: {
+    toreg(){
+      this.$router.push('/mine/reg')
+    },
     regshow() {
       this.show = true;
       setTimeout(() => {
@@ -220,9 +223,11 @@ input {
 }
 .orderlogin {
   position: absolute;
-  bottom: 0;
+
   left: 0;
   right: 0;
+  background: #ffffff;
+  margin-top: 10px;
 }
 .orderlogin-name {
   padding: 23px 0;

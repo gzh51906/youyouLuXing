@@ -123,10 +123,10 @@ export default {
         item.src = src;
         return item;
       });
-      console.log(data1);
+      // console.log(data1);
 
       this.data.push(...data1);
-      console.log(this.data);
+      // console.log(this.data);
     },
 
     handleMainClick(_id) {
@@ -196,7 +196,7 @@ export default {
     // console.log(url);
 
     this.queryUrl = `${url}?${this.limit}&skip=`;
-    console.log(this.queryUrl);
+    // console.log(this.queryUrl);
   }
 };
 </script>

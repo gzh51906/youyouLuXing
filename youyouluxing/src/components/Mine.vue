@@ -1,80 +1,92 @@
 <template>
-    <div class="mine">
-       <div class="title">
-        <van-icon name="arrow-left" size='30px' color='#333' @click='tohome'/>
-           我的会员中心
-      </div>   
-      <!-- 会员中心 根据登陆变化 -->
-        <div>
-            <div class="mystate" v-if='nologin'>            
-                <div class="myproto"> <img src="https://www.yoyoer.com/phone/public/images/member_nopic.png" alt=""></div>               
-                <div class="mystate-con">
-                    <p class="regorlogin"><span @click="tomycon('login')">登陆</span><span>/</span><span @click="tomycon('reg')">注册</span></p>
-                    <span class="huiyuan">会员俱乐部</span>
-                </div>               
-            </div>
-            <div class="mystate" v-else>            
-                <div class="myproto"> <img :src="logincon.imgurl" alt=""></div>               
-                <div class="mystate-con">
-                    <p class="regorlogin"><span >{{logincon.username}}</span><span class="dengji">{{logincon.dengji}}</span></p>
-                    <span class="huiyuan">会员俱乐部</span>
-                </div>        
-                <div class="tomy" @click="tomycon('myaccount')"><van-icon name="arrow" size='30px' color='#ffffff'/></div>       
-            </div>
-          </div>
-          <!-- 我的订单 -->
-         <div class="myorder">
-                <van-row type="flex" justify="space-between" class="myorder-top" align='center'>
-                    <van-col span="6" class="myorder-top-left">我的订单</van-col>
-                    <van-col span="6" class="myorder-top-right" @click="tomycon('myorder')">
-                        全部订单
-                        <van-icon name="arrow"/>
-                    </van-col>
-                
-                </van-row>
-                <van-row type="flex" class="myorder-bottom">
-                    <van-col span="6" v-for="item in list" :key='item.text' @click="tomycon(item.path)">          
-                          <div class="myorder-bottom-list">
-                                <van-icon :name="item.icon" size='30px' color='#666666'/> 
-                                <span class="myorder-bottom-list-span">{{item.text}}</span>
-                          </div>                       
-                    </van-col>            
-                </van-row>
-         </div>
-         <!-- 登陆后出现 -->
-        
-                <van-row type="flex" v-if='!nologin'>
-                    <van-col span="6" v-for="item in myproperty" :key='item.name'>          
-                          <div class="myproperty">
-                                <span>{{item.con}}</span>
-                                <span class="myproperty-name">{{item.name}}</span>
-                          </div>                       
-                    </van-col>            
-                </van-row>
-       
-         <!-- 分销商 -->
-         <van-row type="flex" justify="space-between" class='list-group list-group-one'  @click="tomycon('distributor')">
-            <van-col span="6"><van-icon name="shop-collect-o" color='#ff6b1a' size='20px'/><span class="list-group-one-left-span">分销商</span></van-col>
-            <van-col span="1" class="list-group-one-right"> 
-                  <span>立即申请</span>               
-                 <van-icon name="arrow"/>
-            </van-col>
-           
-        </van-row>
-        <!-- 我的相关消息列表 -->
-        <van-row type="flex" justify="space-between" class='list-group' v-for='item in mylistGroup' :key="item.text" @click="tomycon(item.path)" >
-            <van-col span="6">{{item.text}}</van-col>
-            <van-col span="1">                
-                 <van-icon name="arrow"/>
-            </van-col>
-           
-        </van-row>
+  <div class="mine">
+    <div class="title">
+      <van-icon name="arrow-left" size='30px' color='#333' @click='tohome' /> 我的会员中心
     </div>
+    <!-- 会员中心 根据登陆变化 -->
+    <div>
+      <div class="mystate" v-if='nologin'>
+        <div class="myproto"> <img :src="myimg" alt=""></div>
+        <div class="mystate-con">
+          <p class="regorlogin">
+            <span @click="tomycon('login')">登陆</span>
+            <span>/</span>
+            <span @click="tomycon('reg')">注册</span>
+          </p>
+          <span class="huiyuan">会员俱乐部</span>
+        </div>
+      </div>
+      <div class="mystate" v-else>
+        <div class="myproto"> <img :src="logincon.imgurl" alt=""></div>
+        <div class="mystate-con">
+          <p class="regorlogin">
+            <span>{{logincon.username}}</span>
+            <span class="dengji">{{logincon.dengji}}</span>
+          </p>
+          <span class="huiyuan">会员俱乐部</span>
+        </div>
+        <div class="tomy" @click="tomycon('myaccount')">
+          <van-icon name="arrow" size='30px' color='#ffffff' />
+        </div>
+      </div>
+    </div>
+    <!-- 我的订单 -->
+    <div class="myorder">
+      <van-row type="flex" justify="space-between" class="myorder-top" align='center'>
+        <van-col span="6" class="myorder-top-left">我的订单</van-col>
+        <van-col span="6" class="myorder-top-right" @click="tomycon('myorder')">
+          全部订单
+          <van-icon name="arrow" />
+        </van-col>
+
+      </van-row>
+      <van-row type="flex" class="myorder-bottom">
+        <van-col span="6" v-for="item in list" :key='item.text' @click="tomycon(item.path)">
+          <div class="myorder-bottom-list">
+            <van-icon :name="item.icon" size='30px' color='#666666' />
+            <span class="myorder-bottom-list-span">{{item.text}}</span>
+          </div>
+        </van-col>
+      </van-row>
+    </div>
+    <!-- 登陆后出现 -->
+
+    <van-row type="flex" v-if='!nologin'>
+      <van-col span="6" v-for="item in myproperty" :key='item.name'>
+        <div class="myproperty">
+          <span>{{item.con}}</span>
+          <span class="myproperty-name">{{item.name}}</span>
+        </div>
+      </van-col>
+    </van-row>
+
+    <!-- 分销商 -->
+    <van-row type="flex" justify="space-between" class='list-group list-group-one' @click="tomycon('distributor')">
+      <van-col span="6">
+        <van-icon name="shop-collect-o" color='#ff6b1a' size='20px' />
+        <span class="list-group-one-left-span">分销商</span>
+      </van-col>
+      <van-col span="1" class="list-group-one-right">
+        <span>立即申请</span>
+        <van-icon name="arrow" />
+      </van-col>
+
+    </van-row>
+    <!-- 我的相关消息列表 -->
+    <van-row type="flex" justify="space-between" class='list-group' v-for='item in mylistGroup' :key="item.text" @click="tomycon(item.path)">
+      <van-col span="6">{{item.text}}</van-col>
+      <van-col span="1">
+        <van-icon name="arrow" />
+      </van-col>
+
+    </van-row>
+  </div>
 </template>
 <script>
 export default {
   data() {
     return {
+      myimg: "/img/member_nopic.png",
       list: [
         {
           icon: "paid",
@@ -129,21 +141,23 @@ export default {
       ],
       nologin: true,
       logincon: {},
-      myproperty:[
-         {
-              name:'我的钱包',
-              con:'€0'
-         }, {
-              name:'优惠券',
-              con:'0张'
-         },{
-              name:'红包',
-              con:'0个'
-         }, {
-              name:'积分',
-              con:'0'
-         }
-        
+      myproperty: [
+        {
+          name: "我的钱包",
+          con: "€0"
+        },
+        {
+          name: "优惠券",
+          con: "0张"
+        },
+        {
+          name: "红包",
+          con: "0个"
+        },
+        {
+          name: "积分",
+          con: "0"
+        }
       ]
     };
   },
@@ -170,15 +184,12 @@ export default {
               this.$userajax
                 .post("/user/usercontent", { username })
                 .then(res => {
-        
                   let { data: { msg, data } } = res;
                   if (msg === "success") {
                     this.logincon = {
                       username,
                       dengji: data.dengji || "Lv.1",
-                      imgurl:
-                        data.imgurl ||
-                        "https://www.yoyoer.com/phone/public/images/member_nopic.png"
+                      imgurl: data.imgurl || "/img/member_nopic.png"
                     };
                     this.nologin = false;
                   }
@@ -199,8 +210,7 @@ export default {
   height: 68px;
   padding: 16.5px 26px;
   display: flex;
-  background: url("https://www.yoyoer.com/phone/public/images/user-center-home-bg.jpg")
-    no-repeat;
+  background: url("/img/user-center-home-bg.jpg") no-repeat;
   background-size: cover;
   position: relative;
 }
@@ -282,7 +292,7 @@ export default {
 .list-group-one {
   margin: 10px 0;
   position: relative;
-  border:none;
+  border: none;
 }
 
 .van-icon-shop-collect-o::before {
@@ -316,21 +326,18 @@ export default {
   top: 11px;
 }
 
-.myproperty{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 5px 0;
-    background: #ffffff;
-    padding: 10px 0;
-    font-size: 14px;
+.myproperty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5px 0;
+  background: #ffffff;
+  padding: 10px 0;
+  font-size: 14px;
 }
-.myproperty-name{
-    color:#ccc;
-    font-size: 13px;
-
-
-   
+.myproperty-name {
+  color: #ccc;
+  font-size: 13px;
 }
 </style>
 
