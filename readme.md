@@ -109,3 +109,36 @@
         
    ```
 
+   * 游游旅行后台管理系统src文件夹树状图
+   ```js
+  │  App.vue
+│  main.js
+│  text.txt
+│  
+├─assets
+│      logo.png
+│      
+├─components
+│      HelloWorld.vue
+│      
+├─pages
+│      addgoods.vue
+│      addsort.vue
+│      adduser.vue
+│      goodslist.vue
+│      login.vue
+│      order.vue
+│      setgoodslist.vue
+│      setsortlist.vue
+│      sortlist.vue
+│      userlist.vue
+│      
+├─router
+│      index.js
+│      
+└─store
+        common.js
+        index.js
+   ```
+  
+  
