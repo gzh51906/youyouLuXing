@@ -19,7 +19,6 @@ export default {
         getDataItem(state, dataItem) {
             state.dataItem = dataItem
             // console.log(state.dataItem);
-
         }
     },
     actions: {},

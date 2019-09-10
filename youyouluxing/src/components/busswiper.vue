@@ -4,7 +4,7 @@
       <span>大巴旅游推荐</span>
     </p>
     <van-swipe indicator-color="red" :autoplay="3000" :height="136">
-      <van-swipe-item v-for="item of swiper" :key="item.gid">
+      <van-swipe-item v-for="item of swiper1" :key="item.gid">
         <div class="imgBox">
           <img :src="item.imgurl" alt />
         </div>
@@ -30,7 +30,7 @@ export default {
   data() {
     return {
       // listSwiper: []
-      swiper: [
+      swiper1: [
         {
           imgurl:
             "https://www.yoyoer.com/uploads/2018/1214/caa1565db87e4b37b1fe2e8c754e8c6e_312x212.jpeg",

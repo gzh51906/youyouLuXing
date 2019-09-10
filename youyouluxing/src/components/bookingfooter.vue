@@ -52,7 +52,6 @@ export default {
 
   methods: {
     async next() {
-
       let data = await this.$axios.post("http://localhost:3003/mycart/add", {
         num: this.num,
         _id: this.data._id,
@@ -67,6 +66,8 @@ export default {
         type: this.typeT
       });
       console.log(data);
+
+      this.$router.push(`/successtoful/${this.data._id}`);
     }
   }
 };
