@@ -83,10 +83,10 @@ router.beforeEach(function(to,from,next){
     // 判断目标路由是否需要登录权限
     if(to.matched.some(item=>item.meta.requiresAuth)){
         // 判断是否已登录
-        let authorization = localStorage.getItem('Authorization');
+        let authorization = localStorage.getItem('htAuthorization');
         if(authorization){
             // 发起校验
-            axios.get('http://localhost:3003/verify',{
+            axios.get('http://localhost:3003/htverify',{
                 headers:{
                     Authorization:authorization
                 }

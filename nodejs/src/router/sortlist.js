@@ -10,31 +10,16 @@ const {
 } = require('../db/mongo');
 const {
     formatData,
-    token
 } = require('../utils');
 
-//增加订单
+//增加商品
 router.post('/add', async (req, res) => {
     let {
-        title,
-        src,
-        price,
-        num,
-        status
+        name
     } = req.body;
     try {
-        let total = (price.slice(1)) * num
-        // console.log(total);
-        if (!status) {
-            status = "0";
-        }
-        insert('mycart', {
-            title,
-            src,
-            price,
-            num,
-            status,
-            total
+        insert('sortlist', {
+            name
         });
         res.send(formatData())
     } catch (err) {
@@ -44,14 +29,14 @@ router.post('/add', async (req, res) => {
     }
 })
 
-//获取全部订单
+//获取全部商品
 router.get('/', async (req, res) => {
     let {
         skip,
         limit,
         sort
     } = req.query;
-    let data = await find('mycart', {}, {
+    let data = await find('sortlist', {}, {
         skip,
         limit,
         sort
@@ -61,13 +46,13 @@ router.get('/', async (req, res) => {
     }))
 })
 
-//获取各小项的订单  status：   1==未付款  2==代销费 3==待点评 4==退款
-router.post('/status', async (req, res) => {
+//单个
+router.get('/:id', async (req, res) => {
     let {
-        status
-    } = req.body;
-    let data = await find('mycart', {
-        status: status
+        id
+    } = req.params;
+    let data = await find('sortlist', {
+        _id: id
     });
     res.send(formatData({
         data
@@ -75,14 +60,14 @@ router.post('/status', async (req, res) => {
 })
 
 
-// 删除订单
+// 删除商品
 router.delete('/:id', (req, res) => {
     let {
         id
     } = req.params;
-
+    let data
     try {
-        remove('mycart', {
+        remove('sortlist', {
             _id: id
         })
         res.send(formatData())
@@ -93,25 +78,25 @@ router.delete('/:id', (req, res) => {
     }
 })
 
-//修改订单状态   ：就是修改status的对应状态
+//修改商品
 router.patch('/:id', (req, res) => {
     let {
         id,
     } = req.params;
     let {
-        status
-    } = req.body
-    // console.log('req',status);
+        name
+    } = req.body;
 
     try {
-
-        update('mycart', {
-            _id: id
-        }, {
-            $set: {
-                status: status
-            }
-        })
+        if (name) {
+            update('sortlist', {
+                _id: id
+            }, {
+                $set: {
+                    name: name
+                }
+            })
+        }
 
         res.send(formatData())
     } catch (err) {
@@ -122,18 +107,5 @@ router.patch('/:id', (req, res) => {
 })
 
 
-
-//获取单个订单
-router.get('/:time', async (req, res) => {
-    let {
-        time
-    } = req.params;
-    let data = await find('mycart', {
-        time: time
-    });
-    res.send(formatData({
-        data
-    }))
-})
 
 module.exports = router;

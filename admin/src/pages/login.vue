@@ -69,6 +69,7 @@
             if(data.code === 1){
                 // 保存token到本地         
                 // console.log(data);
+                     console.log(data.data.username);
                      
                 this.$store.commit('login',data.data.authorization);
                 this.$store.commit('getusername',data.data.username);

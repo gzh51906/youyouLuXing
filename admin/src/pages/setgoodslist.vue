@@ -118,9 +118,7 @@ export default {
     },
     getswitch(val) {
     this.ruleForm.delivery = val;
-   
-    
-      
+  
     },
     submitForm(formName) {
       //  console.log(this._id);
@@ -131,6 +129,7 @@ export default {
           let _src = this.img.length != 0 ? this.img : this.storagesrc;
           let _classname = this.classname;
           let _id = this._id;
+           console.log(this.ruleForm.delivery);
 //  console.log(this.ruleForm.delivery);
           let { data } = await this.$axios.patch(
             `http://localhost:3003/${_classname}/${_id}`,
@@ -143,7 +142,7 @@ export default {
               sales: this.ruleForm.sales,
               src: _src,
               title: this.ruleForm.title,
-     delivery:this.ruleForm.delivery
+            delivery:this.ruleForm.delivery
             }
           );
           if (data.code === 1) {

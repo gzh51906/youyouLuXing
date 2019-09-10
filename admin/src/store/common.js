@@ -1,9 +1,11 @@
-import { log } from "util";
+import {
+    log
+} from "util";
 
 export default {
     state: {
         authorization: '',
-        username:''
+        username: ''
     },
     getters: {
         a() {
@@ -11,21 +13,23 @@ export default {
         }
     },
     mutations: {
-        login(state, authorization) {
-            localStorage.setItem('Authorization', authorization)
+        login(state, authorization,username) {
+            localStorage.setItem('htAuthorization', authorization)     
             state.authorization = authorization
+            state.username = username
         },
         logout(state) {
             state.authorization = '';
-            state.username ='';
-            localStorage.removeItem('Authorization');
+            state.username = '';
+            localStorage.removeItem('htAuthorization');
+            localStorage.removeItem('htusername');
         },
-        getusername(state,username){
-         state.username =username;
-         console.log(state.username);
-         
-          
-           
+        getusername(state, username) {
+            localStorage.setItem('htusername', username)
+            state.username = localStorage.getItem('htusername')
+
+
+
         }
     }
 }
