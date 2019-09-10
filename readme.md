@@ -2,8 +2,8 @@
 
 ## 上线
    * 官网：[https://www.yoyoer.com/phone/](https://www.yoyoer.com/phone/)    
-   * 上线地址：
-   * 后台管理系统：
+   * 上线地址：[https://http://47.98.56.8:3003](https://http://47.98.56.8:3003)
+   * 后台管理系统：[https://http://47.98.56.8:3004](https://http://47.98.56.8:3004) 
    * githup地址：[git@github.com:gzh51906/youyouLuXing.git](git@github.com:gzh51906/youyouLuXing.git)  
 
 ## 项目类型
@@ -20,11 +20,11 @@
 
 ## 项目页面截图
    * 首页
-       * ![首页](./img/home.png)
+       * ![首页](./home.png)
    * 列表页
-       * ![列表页](./img/list.png)
+       * ![列表页](./list.png)
    * 后台管理系统
-       * ![后台管理系统](./img/after1.png)
+       * ![后台管理系统](./after1.png)
 
 ## 项目目录说明
    * 游游旅行src文件夹树状图
@@ -107,5 +107,36 @@
         └─unit
                 identify.vue
         
+   ```
+     * 游游旅行后台管理系统src文件夹树状图
+   ```js
+  │  App.vue
+│  main.js
+│  text.txt
+│  
+├─assets
+│      logo.png
+│      
+├─components
+│      HelloWorld.vue
+│      
+├─pages
+│      addgoods.vue
+│      addsort.vue
+│      adduser.vue
+│      goodslist.vue
+│      login.vue
+│      order.vue
+│      setgoodslist.vue
+│      setsortlist.vue
+│      sortlist.vue
+│      userlist.vue
+│      
+├─router
+│      index.js
+│      
+└─store
+        common.js
+        index.js
    ```
 
