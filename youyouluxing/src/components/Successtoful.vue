@@ -5,7 +5,7 @@
         </van-row>
         <!-- 提示 -->
         <div class="success-tishi">
-            <van-icon name="passed" size='20px'/> 您的订单提交成功，我们会尽快为您确认！
+            <van-icon name="passed" size='20px' /> 您的订单提交成功，我们会尽快为您确认！
         </div>
         <!-- 订单内容  padd -->
         <div class="dingdan">
@@ -32,71 +32,76 @@
 </template>
 <script>
 export default {
-   created(){
-    //    console.log(this.$route.params);
-
+  data() {
+    return {
+        dingdan:''
+    };
+  },
+  created() {
+   this.dingdan= this.$route.params;
+   this.$mycart.get(`/${this.$route.params}`).then(res=>{
+       console.log(res);
        
-   } ,
-    methods:{
-        tohome(){
-            this.$router.push('/home')
-        },
-        tomyorder(){
-            this.$router.push('/mine/myorder')
-        }
+   })
+  },
+  methods: {
+    tohome() {
+      this.$router.push("/home");
+    },
+    tomyorder() {
+      this.$router.push("/mine/myorder");
     }
+  }
 };
 </script>
 <style scoped>
-.toful{
-    background: rgba(228, 208, 208, 0.4);
-    position: absolute;
+.toful {
+  background: rgba(228, 208, 208, 0.4);
+  position: absolute;
 
-    top: 0%;
-    bottom: 0%;
+  top: 0%;
+  bottom: 0%;
 }
-.success{
-    height: 50px;
-    line-height: 50px;
-    background: #ffffff;
+.success {
+  height: 50px;
+  line-height: 50px;
+  background: #ffffff;
 }
-.success-tishi{
-    height: 80px;
-    background: orangered;
-    color: #ffffff;
-    padding:20px 40px;
-    box-sizing: border-box;
-
+.success-tishi {
+  height: 80px;
+  background: orangered;
+  color: #ffffff;
+  padding: 20px 40px;
+  box-sizing: border-box;
 }
-.dingdan{
-    padding: 0 20px;
-    font-size: 14px;
-    line-height: 40px;
-      background: #ffffff;
+.dingdan {
+  padding: 0 20px;
+  font-size: 14px;
+  line-height: 40px;
+  background: #ffffff;
 }
-.dingdan-top{
-        height: 40px;
-    border-bottom: 1px solid #cccccc;
+.dingdan-top {
+  height: 40px;
+  border-bottom: 1px solid #cccccc;
 }
-.dingdan-middle{
-   
-    border-bottom: 1px solid #cccccc
+.dingdan-middle {
+  border-bottom: 1px solid #cccccc;
 }
-.dingdan-bottom{
-    height: 40px;
+.dingdan-bottom {
+  height: 40px;
 }
-.toorder{
-    border: 1px solid #cccccc;
-    font-size: 14px;
-    padding: 6px 20px;
-    border-radius: 5px;
-      margin-right: 10px;
+.toorder {
+  border: 1px solid #cccccc;
+  font-size: 14px;
+  padding: 6px 20px;
+  border-radius: 5px;
+  margin-right: 10px;
 }
-.router{
-    margin-top: 30px;
+.router {
+  margin-top: 30px;
 }
-.money{
-    color: orangered;
+.money {
+  color: orangered;
 }
 </style>
 

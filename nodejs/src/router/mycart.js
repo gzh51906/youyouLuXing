@@ -136,12 +136,12 @@ router.patch('/:id', (req, res) => {
     }
 })
 //获取单个订单
-router.get('/:time', async (req, res) => {
+router.get('/:id', async (req, res) => {
     let {
     time
     } = req.params;
     let data = await find('mycart', {
-    time: time
+    _id: id
     });
     res.send(formatData({
     data
