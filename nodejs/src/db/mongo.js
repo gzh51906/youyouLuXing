@@ -36,10 +36,13 @@ exports.insert = async (colName, data) => {
         client,
         db
     } = await connect();
+        if (data._id) {
+            data._id = ObjectId(data._id);
+        }
+
     //获取集合
     let collection = db.collection(colName);
     //插入一条数据
-
 
     let result = await collection.insertOne(data);
     //查询结束，关闭客户端连接
@@ -124,4 +127,3 @@ exports.find = async (colName, query = {}, {
     client.close();
     return data;
 }
-
