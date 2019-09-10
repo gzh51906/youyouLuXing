@@ -1,4 +1,4 @@
-<template>
+F<template>
     <div class="myorder">
         <Mytitle v-slot>我的订单</Mytitle>
         <van-tabs v-model="active" class="myorder-box" @click="onClick" :swipe-threshold='5' color='rgb(86, 150, 247)' line-width='20%' line-height='2px' title-active-color='rgb(86, 150, 247)'>

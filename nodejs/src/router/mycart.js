@@ -98,7 +98,9 @@ router.patch('/:id', (req, res) => {
     let {
         id,
     } = req.params;
-  let {status}=req.body
+    let {
+        status
+    } = req.body
     // console.log('req',status);
 
     try {
@@ -131,5 +133,18 @@ router.get('/:time', async (req, res) => {
     }))
     })
 
+
+//获取单个订单
+router.get('/:time', async (req, res) => {
+    let {
+        time
+    } = req.params;
+    let data = await find('mycart', {
+        time: time
+    });
+    res.send(formatData({
+        data
+    }))
+})
 
 module.exports = router;

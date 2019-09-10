@@ -4,7 +4,9 @@ const router = express.Router();
 
 const {
     insert,
-    find
+    remove,
+    find,
+    update
 } = require('../db/mongo');
 const {
     formatData,
@@ -69,7 +71,7 @@ router.post('/login', async (req, res) => {
     } = req.body;
     let data
     try {
-        data = await find('user', {
+        data = await find('adminuser', {
             username,
             password
         });
@@ -91,6 +93,65 @@ router.post('/login', async (req, res) => {
                 code: 0
             }))
         }
+    } catch (err) {
+        res.send(formatData({
+            code: 0
+        }))
+    }
+})
+
+//获取全部用户
+router.get('/', async (req, res) => {
+    let {
+        skip,
+        limit,
+        sort
+    } = req.query;
+    let data = await find('adminuser', {}, {
+        skip,
+        limit,
+        sort
+    });
+    res.send(formatData({
+        data
+    }))
+})
+
+//删除用户
+router.delete('/:id', (req, res) => {
+    let {
+        id
+    } = req.params;
+    let data
+    try {
+        remove('adminuser', {
+            _id: id
+        })
+        res.send(formatData())
+    } catch (err) {
+        res.send(formatData({
+            code: 0
+        }))
+    }
+})
+
+//添加用户
+router.post('/add', async (req, res) => {
+    let {
+        username,
+        password,
+        jobs,
+        gender    
+    } = req.body;
+    let data
+    try {
+        insert('adminuser', {
+            username,
+            password,
+            jobs,
+            gender
+        });
+        res.send(formatData())
     } catch (err) {
         res.send(formatData({
             code: 0
