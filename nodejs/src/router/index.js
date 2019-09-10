@@ -14,6 +14,10 @@ const dongougoodsRouter = require('./dongougoods');
 const userRouter = require('./user');
 const adminuserRouter = require('./adminuser');
 const mycartRouter = require('./mycart');
+const sortlistRouter = require('./sortlist');
+
+//文件上传
+const uploadRouter = require('./upload');
 
 // 利用中间bodyParse格式化请求参数
 router.use(express.json(), express.urlencoded({
@@ -39,6 +43,10 @@ router.use('/dongougoods', dongougoodsRouter);
 router.use('/adminuser', adminuserRouter);
 router.use('/user', userRouter);
 router.use('/mycart', mycartRouter);
+router.use('/sortlist', sortlistRouter);
+
+//文件上传
+router.use('/upload', uploadRouter)
 
 router.get('/verify', (req, res) => {
     // 获取前端传入的token
@@ -63,7 +71,28 @@ router.get('/verify', (req, res) => {
 
 });
 
+router.get('/htverify', (req, res) => {
+    // 获取前端传入的token
+    // 对token进行校验
+    let authorization = req.header('htAuthorization');
 
+    let result = token.verify(authorization);
+    if (result) {
+        res.send(formatData({
+            data: {
+                authorization: true
+            }
+        }))
+    } else {
+        res.send(formatData({
+            code: 0,
+            data: {
+                authorization: false
+            }
+        }))
+    }
+
+});
 
 
 module.exports = router;

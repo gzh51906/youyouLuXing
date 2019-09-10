@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     seleteRank() {
-      console.log(this.url);
+      // console.log(this.url);
       // this.$store.commit("addDataUrl",this.url)
     }
   },

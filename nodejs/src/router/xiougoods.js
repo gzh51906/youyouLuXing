@@ -20,9 +20,11 @@ router.post('/add', async (req, res) => {
         src,
         sales,
         price,
+        oldprice,
         attr,
         attr1,
-        attr2
+        attr2,
+        delivery
     } = req.body;
     let data
     try {
@@ -31,9 +33,11 @@ router.post('/add', async (req, res) => {
             src,
             sales,
             price,
+            oldprice,
             attr,
             attr1,
-            attr2
+            attr2,
+            delivery
         });
         res.send(formatData())
     } catch (err) {
@@ -48,12 +52,17 @@ router.get('/', async (req, res) => {
     let {
         skip,
         limit,
-        sort
+        sort,
+        asc,
+
     } = req.query;
-    let data = await find('xioudata', {}, {
+    let data = await find('xioudata', {
+
+    }, {
         skip,
         limit,
-        sort
+        sort,
+        asc
     });
     res.send(formatData({
         data
@@ -113,10 +122,15 @@ router.patch('/:id', (req, res) => {
         id,
     } = req.params;
     let {
-        price,
         title,
         src,
-        attr
+        sales,
+        price,
+        oldprice,
+        attr,
+        attr1,
+        attr2,
+        delivery
     } = req.body;
 
     try {
@@ -129,12 +143,31 @@ router.patch('/:id', (req, res) => {
                 }
             })
         }
+        if (sales) {
+            update('xioudata', {
+                _id: id
+            }, {
+                $set: {
+                    sales: sales
+                }
+            })
+        }
+
         if (price) {
             update('xioudata', {
                 _id: id
             }, {
                 $set: {
                     price: price
+                }
+            })
+        }
+        if (oldprice) {
+            update('xioudata', {
+                _id: id
+            }, {
+                $set: {
+                    oldprice: oldprice
                 }
             })
         }
@@ -156,6 +189,33 @@ router.patch('/:id', (req, res) => {
                 }
             })
         }
+        if (attr1) {
+            update('xioudata', {
+                _id: id
+            }, {
+                $set: {
+                    attr1: attr1
+                }
+            })
+        }
+        if (attr2) {
+            update('xioudata', {
+                _id: id
+            }, {
+                $set: {
+                    attr2: attr2
+                }
+            })
+        }
+
+        update('xioudata', {
+            _id: id
+        }, {
+            $set: {
+                delivery: delivery
+            }
+        })
+
         res.send(formatData())
     } catch (err) {
         res.send(formatData({

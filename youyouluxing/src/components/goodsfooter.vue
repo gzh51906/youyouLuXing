@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     handleServiceClick() {
-      console.log("service");
+      // console.log("service");
       this.$router.push({ name: "service" });
     },
     handleSaveClick() {
