@@ -126,7 +126,7 @@ export default {
       console.log(data1);
 
       this.data.push(...data1);
-      console.log(this.data);
+      // console.log(this.data);
     },
 
     handleMainClick(_id) {

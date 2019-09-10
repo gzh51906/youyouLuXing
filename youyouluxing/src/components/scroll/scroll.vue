@@ -36,7 +36,7 @@ export default {
 
     // 获取实时位置 (包括惯性拖动)
     this.scroll.on("scroll", position => {
-      // console.log(position);
+      // console.log(position.y);
       this.$emit("scroll", position); //通过自定义事件，让需要接收position的组件，触发该事件
     });
 
@@ -47,7 +47,7 @@ export default {
 
       setTimeout(() => {
         this.scroll.finishPullUp();
-      }, 3000);
+      }, 5000);
     });
 
     // 这步非常重要，当this.scroll，加载完成后，再重新计算可以滚动的高度，慎防图片加载慢，而造成滚动高度的偏差
@@ -63,8 +63,9 @@ export default {
   methods: {
     scrollTo(x, y, time = 500) {
       // new BScroll实例中有一个scrollTo的方法
+      // console.log(y);
+
       this.scroll && this.scroll.scrollTo(x, y, time);
-      
     },
 
     finishPullUp() {
@@ -74,7 +75,6 @@ export default {
     refresh() {
       this.scroll && this.scroll.refresh();
       console.log("refresh");
-      
     }
   }
 };

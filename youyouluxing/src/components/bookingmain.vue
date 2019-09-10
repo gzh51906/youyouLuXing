@@ -11,6 +11,7 @@
             :key="item.num"
             @click="handleLiClick(item,index)"
             ref="li"
+            :class="{'active':isActive==index}"
           >
             <span>
               {{item.num}}
@@ -21,7 +22,7 @@
       </div>
     </div>
     <div class="after"></div>
-    <van-datetime-picker type="date" />
+    <van-datetime-picker type="date" @confirm="getDate" />
     <div class="after"></div>
     <div class="many">
       <div class="num">
@@ -45,7 +46,7 @@
     <div class="imgBox">
       <img :src="imgurl" alt />
     </div>
-    <BookingFooter :totalPrice="totalPrice" :num="value1" :sub="sub" :number="value2"></BookingFooter>
+    <BookingFooter :totalPrice="price" :num="value1" :sub="sub" :number="value2" :typeT="type"></BookingFooter>
   </div>
 </template>
 
@@ -62,9 +63,10 @@ export default {
       value1: 1,
       value2: 0,
       data: {},
+      isActive: 0,
       // disabled: true,
-      active: 0,
-      active1: 1,
+      // active: 0,
+      // active1: 1,
       tit2: [
         {
           num: "前20单",
@@ -76,25 +78,35 @@ export default {
         }
       ],
       price: 0,
-      totalPrice: 0
+      date: null,
+      totalPrice: 0,
+      type: ""
+      // dataBase:{}
     };
   },
   methods: {
     handleLiClick(item, index) {
-      let { li } = this.$refs;
-      // console.log(li[index]);
+      this.isActive = index;
+      this.price = item.price;
+      this.type = item.num;
+      console.log(this.price);
+      console.log(this.type);
 
-      if (index == this.active || index == this.active1) {
-        li[index].className = li[index].className === "active" ? "" : "active";
+    },
+
+    getDate() {
+      let date = new Date();
+      let day = zero(date.getDate());
+      let month = zero(date.getMonth() + 1);
+      let year = zero(date.getFullYear());
+      function zero(num) {
+        if (num < 10) {
+          num = `0${num}`;
+        }
+        return num;
       }
-      if (li[index].className === "active") {
-        this.totalPrice = item.price;
-        this.sub = 35;
-        // this.disabled = false;
-      } else {
-        this.totalPrice = 0;
-        // this.disabled = true;
-      }
+      this.date = `${year}/${month}/${day}`;
+      console.log(this.date);
     }
   },
   computed: {

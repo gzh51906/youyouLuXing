@@ -64,7 +64,7 @@ export default {
   },
   created() {
     this.getDataMock(
-      "https://www.easy-mock.com/mock/5d6d17457d13025d9f04c61f/example/youyoulvxing"
+      // "https://www.easy-mock.com/mock/5d6d17457d13025d9f04c61f/example/youyoulvxing",
     );
   },
   mounted() {}

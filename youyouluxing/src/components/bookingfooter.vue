@@ -3,7 +3,7 @@
     <span class="tprice">总额：</span>
     <span class="price">€{{getTotalPrice}}</span>
     <span class="fullpay">全款支付</span>
-    <van-button type="primary">下一步</van-button>
+    <van-button type="primary" @click.native="next">下一步</van-button>
   </div>
 </template>
 
@@ -11,9 +11,30 @@
 export default {
   name: "BookingFooter",
   data() {
-    return { data: {}, totalPrice1: 0 };
+    return {
+      data: {},
+      totalPrice1: 89,
+      time: "",
+      title: "",
+      type: "",
+      src: "",
+      price: "",
+      sales: "",
+
+      dataDB: {
+        status: "1",
+        price: "",
+        oldprice: "",
+        src: "",
+        pay: "",
+        time: "",
+        title: "",
+        type: "",
+        _id: ""
+      }
+    };
   },
-  props: ["totalPrice", "num", "sub", "number"],
+  props: ["totalPrice", "num", "sub", "number", "typeT"],
   computed: {
     getTotalPrice() {
       this.totalPrice1 = this.totalPrice * this.num + this.sub * this.number;
@@ -21,7 +42,32 @@ export default {
     }
   },
   created() {
-    // console.log(this.price);
+    console.log(this.totalPrice);
+
+    this.data = this.$store.state.bus.dataItem;
+    console.log(this.data);
+    let time = new Date().getTime();
+    this.time = time;
+  },
+
+  methods: {
+    async next() {
+
+      let data = await this.$axios.post("http://localhost:3003/mycart/add", {
+        num: this.num,
+        _id: this.data._id,
+        oldprice: this.data.oldprice,
+        price: this.data.price,
+        sales: this.data.sales,
+        pay: this.totalPrice1,
+        src: this.data.src[0],
+        time: this.time,
+        title: this.data.title,
+        status: "1",
+        type: this.typeT
+      });
+      console.log(data);
+    }
   }
 };
 </script>

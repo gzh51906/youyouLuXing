@@ -1,81 +1,100 @@
 <template>
-  <div>
+  <div class="goodsbox">
     <BusHeader></BusHeader>
-    <div class="swiperBox">
-      <van-swipe indicator-color="white" :height="200" :autoplay="3000">
-        <van-swipe-item v-for="url of data.src" :key="url">
-          <div class="img">
-            <img :src="url" alt />
+    <Scroll class="wrapper" :probeType="3" ref="scroll" @scroll="display">
+      <div class="swiperBox">
+        <van-swipe indicator-color="white" :height="200" :autoplay="3000">
+          <van-swipe-item v-for="url of data.src" :key="url">
+            <div class="img">
+              <img :src="url" alt />
+            </div>
+          </van-swipe-item>
+        </van-swipe>
+        <p>
+          <span class="span1">{{data.attr1}}</span>
+          <span class="span2">{{data.sales}}</span>
+        </p>
+      </div>
+      <div class="product">
+        <div class="productBox">
+          <div class="tit-bar">{{data.title}}</div>
+          <div class="bst-bar">
+            <span>{{data.price}}</span>
+            <span>{{data.oldprice}}</span>
+            <span>200人出游</span>
+            <span>100%满意</span>
           </div>
-        </van-swipe-item>
-      </van-swipe>
-      <p>
-        <span class="span1">{{data.attr1}}</span>
-        <span class="span2">{{data.sales}}</span>
-      </p>
-    </div>
-    <div class="product">
-      <div class="productBox">
-        <div class="tit-bar">{{data.title}}</div>
-        <div class="bst-bar">
-          <span>{{data.price}}</span>
-          <span>{{data.oldprice}}</span>
-          <span>200人出游</span>
-          <span>100%满意</span>
         </div>
       </div>
-    </div>
-    <p class="before"></p>
-    <div class="date">
-      <p class="date-class">出发日期</p>
-      <div class="date-box">
-        <ul>
-          <li v-for="item of date" :key="item.time">
-            <span>{{item.time}}</span>
-            <span class="spanDate">{{item.price}}</span>
-          </li>
-        </ul>
+      <p class="before"></p>
+      <div class="date">
+        <p class="date-class">出发日期</p>
+        <div class="date-box">
+          <ul>
+            <li v-for="item of date" :key="item.time">
+              <span>{{item.time}}</span>
+              <span class="spanDate">{{item.price}}</span>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-    <div class="after"></div>
-    <div class="qa">
-      <div class="qa1">
-        <span class="youke">游客问答</span>
-        <span class="answerdata">0条问答</span>
+      <div class="after"></div>
+      <div class="qa">
+        <div class="qa1">
+          <span class="youke">游客问答</span>
+          <span class="answerdata">0条问答</span>
+        </div>
+        <div class="qa2">
+          <span class="answer">本产品无问答内容!</span>
+          <van-button round type="primary" plain hairline size="small">去提问</van-button>
+        </div>
       </div>
-      <div class="qa2">
-        <span class="answer">本产品无问答内容!</span>
-        <van-button round type="primary" plain hairline size="small">去提问</van-button>
-      </div>
-    </div>
-    <div class="after"></div>
+      <div class="after"></div>
 
-    <div class="goodmain">
-      <van-tabs>
-        <van-tab v-for="item of goodslist" :key="item.type" :title="item.type">
-          <div v-for="(url,index) of item.url" :key="index">
-            <img :src="url" alt />
+      <div class="goodmain">
+        <!-- <van-tabs @click="handleTabClick">
+          <van-tab v-for="(item, index) of goodslist" :key="item.type" :title="item.type">
+            <div v-for="(url,index) of item.url" :key="index">
+              <img :src="url" alt />
+            </div>
+          </van-tab>
+        </van-tabs>-->
+        <ul class="type-box">
+          <li
+            v-for="(item,index) of goodslist"
+            :key="item.type"
+            class="type"
+            @click="handleLiClick(index)"
+            :class="{active:index===activeIndex}"
+          >{{item.type}}</li>
+        </ul>
+        <div class="imgBox">
+          <div class="img1" v-for="(item,index) of goodslist" :key="item.type" ref="img1">
+            <img :src="url" alt v-for="url of item.url" :key="url" />
           </div>
-        </van-tab>
-      </van-tabs>
-      <!-- <ul class="type-box">
-        <li v-for="item of goodslist" :key="item.type" class="type" >{{item.type}}</li>
-      </ul>-->
-    </div>
-    <GoodsFooter></GoodsFooter>
+        </div>
+      </div>
+    </Scroll>
+    <BackTop @click.native="backTo" v-show="isShow"></BackTop>
+
+    <GoodsFooter :data="data"></GoodsFooter>
   </div>
 </template>
 
 <script>
 import BusHeader from "../components/busheader.vue";
 import GoodsFooter from "../components/goodsfooter.vue";
+import Scroll from "../components/scroll/scroll.vue";
+import BackTop from "../components/backTop/backTop.vue";
 // import { log } from "util";
 // import GoodsSwiper from '../components/goodsswiper.vue'
 export default {
   name: "goods",
   components: {
     GoodsFooter,
-    BusHeader
+    BusHeader,
+    Scroll,
+    BackTop
   },
   data() {
     return {
@@ -118,7 +137,10 @@ export default {
           type: "如何参团",
           url: ["/img/ddd.png"]
         }
-      ]
+      ],
+      activeIndex: 0,
+      isShow: false,
+      src: null
     };
   },
   methods: {
@@ -126,6 +148,21 @@ export default {
     // jump() {
     //   this.$router.push({ name: "save" });
     // }
+    handleLiClick(index) {
+      // console.log(index);
+      // console.log(this.$refs.scroll);
+      this.activeIndex = index;
+      let offsetTop = -this.$refs.img1[index].offsetTop + 48;
+      // console.log(offsetTop);
+      this.$refs.scroll.scrollTo(0, offsetTop, 1000);
+    },
+    backTo() {
+      this.$refs.scroll.scrollTo(0, 0, 1000);
+    },
+
+    display(position) {
+      this.isShow = -position.y > 1000 ? true : false;
+    }
   },
 
   async created() {
@@ -145,7 +182,14 @@ export default {
     });
     this.data = data[0];
     // console.log(this.data);
-  }
+
+    this.src = data[0].src;
+
+    this.$store.commit("getDataItem", this.data);
+
+    // console.log(this.src);
+  },
+
   // 路由组件守卫
   // beforeRouteEnter(to, from, next) {
   //   console.log(from);
@@ -310,9 +354,10 @@ export default {
 .answer {
   margin-right: 140px;
 }
-/* .van-tabs {
-  margin-bottom: 55px;
-} */
+.van-tabs {
+  /* margin-bottom: 55px; */
+  display: block !important;
+}
 .type-box {
   width: 375px;
   overflow: hidden;
@@ -325,5 +370,27 @@ export default {
   align-items: center;
   justify-content: center;
   font-size: 14px;
+}
+.goodsbox {
+  width: 375px;
+  overflow: hidden;
+  height: calc(100vh - 48px);
+}
+.wrapper {
+  width: 375px;
+  height: calc(100% - 55px);
+  /* background: pink; */
+  margin-top: 48px;
+  overflow: hidden;
+}
+.active {
+  border-bottom: 2px solid #58bc58;
+  color: #58bc58;
+  box-sizing: border-box;
+}
+.BackTop {
+  position: absolute;
+  bottom: 75px;
+  right: 20px;
 }
 </style>
