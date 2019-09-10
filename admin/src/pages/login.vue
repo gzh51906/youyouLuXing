@@ -28,7 +28,7 @@
     </div>
 </template>
 <script>
-  export default {
+export default {
   data() {
     var validatePass = (rule, value, callback) => {
       if (value === "") {
@@ -42,19 +42,17 @@
     };
 
     return {
-         checked: true,
+      checked: true,
       ruleForm: {
         username: "",
-        pass: "",
+        pass: ""
       },
       rules: {
         pass: [
           { required: true, message: "请输入密码", trigger: "blur" },
           { validator: validatePass, trigger: "blur" }
         ],
-        username: [
-          { required: true, message: "请输入用户名", trigger: "blur" },
-        ]
+        username: [{ required: true, message: "请输入用户名", trigger: "blur" }]
       }
     };
   },
@@ -62,22 +60,24 @@
     gotoReg() {
       this.$refs["loginForm"].validate(async valid => {
         if (valid) {
-            let {data} = await this.$axios.post('http://localhost:3003/adminuser/login',{
-                username:this.ruleForm.username,
-                password:this.ruleForm.pass
-            });
-            if(data.code === 1){
-                // 保存token到本地         
-                // console.log(data);
-                     console.log(data.data.username);
-                     
-                this.$store.commit('login',data.data.authorization);
-                this.$store.commit('getusername',data.data.username);
-                  this.$router.push("/sortlist");
-            }else{
-               this.$message.error('用户或密码错了哦!');
+          let { data } = await this.$axios.post(
+            "http://localhost:3003/adminuser/login",
+            {
+              username: this.ruleForm.username,
+              password: this.ruleForm.pass
             }
+          );
+          if (data.code === 1) {
+            // 保存token到本地
+            // console.log(data);
+            console.log(data.data.username);
 
+            this.$store.commit("login", data.data.authorization);
+            this.$store.commit("getusername", data.data.username);
+            this.$router.push("/sortlist");
+          } else {
+            this.$message.error("用户或密码错了哦!");
+          }
         } else {
           console.log("error submit!!");
           return false;
@@ -85,6 +85,6 @@
       });
     }
   }
-}
+};
 </script>
 

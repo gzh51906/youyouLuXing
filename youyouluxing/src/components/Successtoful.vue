@@ -10,22 +10,22 @@
         <!-- 订单内容  padd -->
         <div class="dingdan">
             <van-row class="dingdan-top">
-                <van-col span="5">订单号：</van-col>
-                <van-col span="19"></van-col>
+                <van-col span="6">订单号：</van-col>
+                <van-col span="18">{{dingdan.ddh}}</van-col>
             </van-row>
             <van-row class="dingdan-middle">
-                <van-col span="5">产品名称：</van-col>
-                <van-col span="19"></van-col>
+                <van-col span="6">产品名称：</van-col>
+                <van-col span="18">{{dingdan.title}}</van-col>
             </van-row>
             <van-row class="dingdan-bottom">
-                <van-col span="5">支付金额：</van-col>
-                <van-col span="19" class="money"></van-col>
+                <van-col span="6">支付金额：</van-col>
+                <van-col span="18" class="money">€{{dingdan.pay}}</van-col>
             </van-row>
         </div>
         <!-- 返回首页  查看订单 -->
         <van-row type="flex" justify="center" class="router">
-            <van-col span="6" class="toorder" @click="tohome">返回首页</van-col>
-            <van-col span="6" class="toorder" @click='tomyorder'>查看订单</van-col>
+            <van-col span="7" class="toorder" @click="tohome">返回首页</van-col>
+            <van-col span="7" class="toorder" @click='tomyorder'>查看订单</van-col>
         </van-row>
     </div>
 
@@ -34,13 +34,25 @@
 export default {
   data() {
     return {
-        dingdan:''
+        dingdan:{}
     };
   },
   created() {
    this.dingdan= this.$route.params;
-   this.$mycart.get(`/${this.$route.params}`).then(res=>{
-       console.log(res);
+  //  console.log('11',this.$route.params);
+   
+   this.$mycart.get(`/${this.$route.params.id}`).then(res=>{
+      //  console.log('res',res);
+       let {data:{data}}=res;
+        //  console.log(data);
+        //  data[0]
+        let result ={
+          ddh:data[0].time,
+          pay:data[0].pay,
+          title:data[0].title
+        }
+        this.dingdan=result;
+         
        
    })
   },
@@ -95,7 +107,8 @@ export default {
   font-size: 14px;
   padding: 6px 20px;
   border-radius: 5px;
-  margin-right: 10px;
+  margin:0 10px;
+  text-align: center;
 }
 .router {
   margin-top: 30px;

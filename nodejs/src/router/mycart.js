@@ -138,7 +138,7 @@ router.patch('/:id', (req, res) => {
 //获取单个订单
 router.get('/:id', async (req, res) => {
     let {
-    time
+    id
     } = req.params;
     let data = await find('mycart', {
     _id: id
@@ -150,16 +150,6 @@ router.get('/:id', async (req, res) => {
 
 
 //获取单个订单
-router.get('/:time', async (req, res) => {
-    let {
-        time
-    } = req.params;
-    let data = await find('mycart', {
-        time: time
-    });
-    res.send(formatData({
-        data
-    }))
-})
+
 
 module.exports = router;

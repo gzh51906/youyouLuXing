@@ -52,6 +52,10 @@ F<template>
                                      <!-- <span class="failpay"></span> -->
                                      <span class="successpay">待退款</span>
                                   </div>
+                                  <div v-else-if='item.status==="已退款"'>
+                                     <!-- <span class="failpay"></span> -->
+                                     <span class="successpay">已退款</span>
+                                  </div>
                                    
                                 </van-col>
                             </van-row>
@@ -115,6 +119,9 @@ export default {
           }
           if (element.status == '4') {
             element.status = "退款";
+          }
+          if (element.status == '5') {
+            element.status = "已退款";
           }
         });
       } else {
