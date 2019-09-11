@@ -73,7 +73,7 @@ export default {
         if (valid) {
          
           let { data } = await this.$axios.post(
-            `http://localhost:3003/adminuser/add`,
+            `../adminuser/add`,
             {
               username: this.ruleForm.username,
               password: this.ruleForm.password,

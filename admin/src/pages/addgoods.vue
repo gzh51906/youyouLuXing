@@ -46,7 +46,7 @@
   </el-form-item>
   <div class="demo-image">
   <el-upload
-  action="http://localhost:3003/upload/goods"
+  action="../upload/goods"
   list-type="picture-card"
   :on-preview="handlePictureCardPreview"
   :on-remove="handleRemove" 
@@ -139,7 +139,7 @@ export default {
           console.log(this.ruleForm.delivery);
           
           let { data } = await this.$axios.post(
-            `http://localhost:3003/${classname}/add`,
+            `../${classname}/add`,
             {
               attr: this.ruleForm.attr,
               attr1: this.ruleForm.attr1,

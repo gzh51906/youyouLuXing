@@ -127,7 +127,7 @@ export default {
       }
 
       let { data } = await this.$axios.delete(
-        `http://localhost:3003/${classname}/${row._id}`
+        `../${classname}/${row._id}`
       );
       if (data.code === 1) {
         this.render(classname);
@@ -153,7 +153,7 @@ export default {
 
     async render(list) {
       let { data: { data } } = await this.$axios.get(
-        `http://localhost:3003/${list}`
+        `../${list}`
       );
       // console.log(data);
       this.tableData = data;

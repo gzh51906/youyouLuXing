@@ -26,7 +26,7 @@
 export default {
   name: "busmain",
   data() {
-    return { data: {}, url: "http://localhost:3003/nanougoods" };
+    return { data: {}, url: "../nanougoods" };
   },
   computed: {},
   methods: {
@@ -91,7 +91,7 @@ export default {
   },
 
   created() {
-    this.getData("http://localhost:3003/nanougoods?limit=4");
+    this.getData("../nanougoods?limit=4");
   }
 };
 </script>

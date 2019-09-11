@@ -31,7 +31,6 @@ router.post('/add', async (req, res) => {
         _id,
         type
     } = req.body;
-    
     try {
         let total = (price.slice(1)) * num
       
@@ -40,7 +39,7 @@ router.post('/add', async (req, res) => {
             src,
             price,
             num,
-            status:"1",
+            status,
             total,
             oldprice,
             sales,

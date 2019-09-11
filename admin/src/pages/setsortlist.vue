@@ -32,7 +32,7 @@ export default {
   methods: {
     async onSubmit() {
       let { data } = await this.$axios.patch(
-        `http://localhost:3003/sortlist/${this.form._id}`,
+        `../sortlist/${this.form._id}`,
         {
           name: this.form.newname
         }

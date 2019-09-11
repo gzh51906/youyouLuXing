@@ -173,7 +173,7 @@ export default {
     let authorization = localStorage.getItem("Authorization");
     if (authorization) {
       this.$axios
-        .get("http://localhost:3003/verify", {
+        .get("../verify", {
           headers: { Authorization: authorization }
         })
         .then(res => {

@@ -10,10 +10,10 @@ Vue.prototype.$axios = axios;
 Vue.prototype.$bus = new Vue()
 
 let userajax = axios.create({
-  baseURL: 'http://localhost:3003'
+  baseURL: '../'
 })
 let mycart = axios.create({
-  baseURL: 'http://localhost:3003/mycart'
+  baseURL: '../mycart'
 })
 Vue.prototype.$userajax = userajax;
 Vue.prototype.$mycart = mycart;

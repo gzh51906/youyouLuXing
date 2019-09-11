@@ -26,7 +26,7 @@
 export default {
   name: "busmain",
   data() {
-    return { data: {}, url: "http://localhost:3003/dongougoods" };
+    return { data: {}, url: "../dongougoods" };
   },
   computed: {},
   methods: {

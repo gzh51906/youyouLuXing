@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="dynamic">
     <van-row class="inputbox">
       <input type="text" placeholder="请输入手机号码前加国际区号（如：法国33）" v-model="username">
     </van-row>
@@ -111,6 +111,9 @@ export default {
 };
 </script>
 <style scoped>
+.dynamic{
+  background: #ffffff;
+}
 .inputbox {
   border-bottom: 1px solid #cccccc;
 }

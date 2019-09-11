@@ -86,7 +86,7 @@ router.beforeEach(function(to,from,next){
         let authorization = localStorage.getItem('htAuthorization');
         if(authorization){
             // 发起校验
-            axios.get('http://localhost:3003/htverify',{
+            axios.get('../htverify',{
                 headers:{
                     Authorization:authorization
                 }

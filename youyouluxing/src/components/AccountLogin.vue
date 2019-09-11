@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="account">
          <van-row class="inputbox">
             <input type="text" placeholder="手机号码前加国际区号（如：法国33）/邮箱" v-model="username"> 
         </van-row>
@@ -194,6 +194,9 @@ export default {
 };
 </script>
 <style scoped>
+.account{
+  background: #ffffff
+}
 .inputbox {
   border-bottom: 1px solid #cccccc;
 }

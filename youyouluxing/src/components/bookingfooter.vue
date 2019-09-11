@@ -52,7 +52,7 @@ export default {
 
   methods: {
     async next() {
-      let data = await this.$axios.post("http://localhost:3003/mycart/add", {
+      let data = await this.$axios.post("../mycart/add", {
         num: this.num,
         _id: this.data._id,
         oldprice: this.data.oldprice,
@@ -78,7 +78,8 @@ export default {
   width: 375px;
   height: 45px;
   position: fixed;
-  top: 767px;
+  /* top: 767px; */
+  bottom: 0px;
   background: #fff;
   /* margin-top: 50px; */
 }

@@ -73,7 +73,7 @@ export default {
       console.log(2);
       
       let { data } = await this.$axios.delete(
-        `http://localhost:3003/adminuser/${row._id}`
+        `../adminuser/${row._id}`
       );
       if (data.code === 1) {
         this.render();
@@ -99,7 +99,7 @@ export default {
 
     async render() {
       let { data: { data } } = await this.$axios.get(
-        "http://localhost:3003/adminuser"
+        "../adminuser"
       );
       // console.log(data);
       this.tableData = data;

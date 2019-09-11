@@ -208,7 +208,7 @@ router.beforeEach((to, from, next) => {
     if (authorization) {
       // console.log('authorization',authorization);
       //校验
-      axios.get('http://localhost:3003/verify', {
+      axios.get('../verify', {
         headers: {
           Authorization: authorization
         }

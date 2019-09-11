@@ -28,7 +28,7 @@ export default {
   data() {
     return {
       data: {},
-      url: "http://localhost:3003/xiougoods?limit=20"
+      url: "../xiougoods?limit=20"
     };
   },
   computed: {},
@@ -77,7 +77,7 @@ export default {
   },
 
   created() {
-    this.getData("http://localhost:3003/xiougoods?limit=4");
+    this.getData("../xiougoods?limit=4");
   }
 };
 </script>

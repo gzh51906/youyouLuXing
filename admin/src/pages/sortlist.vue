@@ -80,7 +80,7 @@ export default {
       // console.log(row._id);
       //  let status = row._id;
       let { data } = await this.$axios.delete(
-        `http://localhost:3003/sortlist/${row._id}`
+        `../sortlist/${row._id}`
       );
       if (data.code === 1) {
         this.render();
@@ -106,7 +106,7 @@ export default {
 
     async render() {
       let { data: { data } } = await this.$axios.get(
-        "http://localhost:3003/sortlist"
+        "../sortlist"
       );
       // console.log(data);
       this.tableData = data;

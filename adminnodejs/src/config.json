@@ -1,0 +1,6 @@
+{
+    "PORT": 3003,
+    "DBurl": "mongodb://localhost:27017",
+    "DBname": "webdata"
+
+}

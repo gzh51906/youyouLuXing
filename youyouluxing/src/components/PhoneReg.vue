@@ -174,6 +174,7 @@ export default {
 <style scoped>
 .phonereg {
   position: relative;
+  background: #ffffff;
 }
 .inputbox {
   border-bottom: 1px solid #cccccc;

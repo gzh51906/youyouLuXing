@@ -33,7 +33,7 @@ export default {
   methods: {
    async onSubmit() {
         let { data } = await this.$axios.post(
-        `http://localhost:3003/sortlist/add`,
+        `../sortlist/add`,
         {
           name: this.form.newname
         }

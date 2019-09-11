@@ -77,7 +77,7 @@ export default {
       })
         .then(async () => {
           let { data } = await this.$axios.patch(
-            `http://localhost:3003/mycart/${row._id}`,
+            `../mycart/${row._id}`,
             {
               status: "5"
             }
@@ -116,7 +116,7 @@ export default {
 
     async render() {
       let { data: { data } } = await this.$axios.post(
-        "http://localhost:3003/mycart/status",
+        "../mycart/status",
         {
           status: "4"
         }

@@ -61,7 +61,7 @@ export default {
       this.$refs["loginForm"].validate(async valid => {
         if (valid) {
           let { data } = await this.$axios.post(
-            "http://localhost:3003/adminuser/login",
+            "../adminuser/login",
             {
               username: this.ruleForm.username,
               password: this.ruleForm.pass

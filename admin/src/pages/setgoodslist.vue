@@ -37,7 +37,7 @@
   </div>
 
   <el-upload
-  action="http://localhost:3003/upload/goods"
+  action="../upload/goods"
   list-type="picture-card"
   :on-preview="handlePictureCardPreview"
   :on-remove="handleRemove" 
@@ -132,7 +132,7 @@ export default {
            console.log(this.ruleForm.delivery);
 //  console.log(this.ruleForm.delivery);
           let { data } = await this.$axios.patch(
-            `http://localhost:3003/${_classname}/${_id}`,
+            `../${_classname}/${_id}`,
             {
               attr: this.ruleForm.attr,
               attr1: this.ruleForm.attr1,
@@ -181,7 +181,7 @@ export default {
     let { classname, id } = this.$route.query;
     //   console.log(classname,id);
     let { data: { data } } = await this.$axios.get(
-      `http://localhost:3003/${classname}/${id}`
+      `../${classname}/${id}`
     );
     for (const key in data[0]) {
       this.ruleForm[key] = data[0][key];

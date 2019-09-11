@@ -177,6 +177,9 @@ export default {
 };
 </script>
 <style scoped>
+.emailreg {
+  background: #ffffff;
+}
 .inputbox {
   border-bottom: 1px solid #cccccc;
 }
